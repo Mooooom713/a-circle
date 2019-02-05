@@ -6,6 +6,8 @@
 
 * 首页
 
+(https://github.com/Mooooom713/a-circle/blob/master/image/2019-02-05_16-32-09.png)
+
 ## version 0.1.0
 
 ### react 16.7.0
