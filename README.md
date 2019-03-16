@@ -6,12 +6,6 @@
 
 * 首页
 
-(https://github.com/Mooooom713/a-circle/blob/master/image/2019-02-05_16-32-09.png)
+![首页设计图](https://github.com/Mooooom713/a-circle/blob/master/image/2019-02-05_16-32-09.png)
 
 ## version 0.1.0
-
-### react 16.7.0
-
-* prop-types做类型校验
-
-### lodash 4.17.11
