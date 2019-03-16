@@ -1,0 +1,114 @@
+.imgWrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* left top */
+
+.blockLargeLeftTop {
+    display: inline-block;
+    width: 350px;
+    height: 250px;
+    border: 2px solid #fff;
+    background: url(../../img/studio.png);
+    background-size: 100% 100%;
+    -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s, transform 1s;
+    text-align: center;
+    line-height: 250px;
+    font-family: 'MF LingYi';
+}
+
+.blockLargeLeftTop:hover { 
+    cursor: pointer;
+    width: 370px;
+    height: 270px;
+    background: url(../../img/studio.png);
+}
+
+/* right top */
+
+.blockLargeRightTop {
+    display: inline-block;
+    width: 350px;
+    height: 250px;
+    border: 2px solid #fff;
+    background: url(../../img/famous.png);
+    background-size: 100% 100%;
+    -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s, transform 1s;
+    margin-left: 20px;
+    text-align: center;
+    line-height: 250px;
+}
+
+
+.blockLargeRightTop:hover {
+    cursor: pointer;
+    width: 370px;
+    height: 270px;
+    background: url(../../img/famous.png);
+}
+
+/* left bottom */
+
+.blockLargeLeftBottom {
+    display: inline-block;
+    width: 350px;
+    height: 250px;
+    border: 2px solid #fff;
+    background: url(../../img/gaokao.png);
+    background-size: 100% 100%;
+    -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s, transform 1s;
+    text-align: center;
+    line-height: 250px;
+}
+
+
+.blockLargeLeftBottom:hover {
+    cursor: pointer;
+    width: 370px;
+    height: 270px;
+    background: url(../../img/gaokao.png);
+}
+
+/* right bottom */
+
+.blockLargeRightBottom {
+    display: inline-block;
+    width: 350px;
+    height: 250px;
+    border: 2px solid #fff;
+    background: url(../../img/club.png);
+    background-size: 100% 100%;
+    -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s, height 1s, transform 1s;
+    margin-left: 20px;
+    text-align: center;
+    line-height: 250px;
+}
+
+
+.blockLargeRightBottom:hover {
+    cursor: pointer;
+    width: 370px;
+    height: 270px;
+    background: url(../../img/club.png);
+}
+
+
+.show{
+    display: inline;
+}
+
+.hide{
+    display: none;
+}
