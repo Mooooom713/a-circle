@@ -6,6 +6,6 @@
 
 * 首页
 
-![首页设计图](https://github.com/Mooooom713/a-circle/blob/master/image/2019-02-05_16-32-09.png)
+![首页设计图](https://github.com/Mooooom713/a-circle/blob/dev/image/home.png)
 
 ## version 0.1.0
