@@ -12,24 +12,28 @@ class Home extends React.Component {
 			{
 				blockPositon: 'blockLargeLeftTop',
 				imgTitle: contentListZH.MODEL_NAME_STUDIO_ImgTitle,
-				imgSrc: contentListZH.MODEL_NAME_Studio
+				imgSrc: contentListZH.MODEL_NAME_Studio,
+				hoverBg:contentListZH.MODEL_CLASSNAME_Studio
 			},
 			{
 				blockPositon: 'blockLargeRightTop',
 				imgTitle: contentListZH.MODEL_NAME_FAMOUS_ImgTitle,
-				imgSrc: contentListZH.MODEL_NAME_Famous
+				imgSrc: contentListZH.MODEL_NAME_Famous,
+				hoverBg:contentListZH.MODEL_CLASSNAME_Famous
 			}
 		];
 		let downItems = [
 			{
 				blockPositon: 'blockLargeLeftBottom',
 				imgTitle: contentListZH.MODEL_NAME_GAOKAO_ImgTitle,
-				imgSrc: contentListZH.MODEL_NAME_Gaokao
+				imgSrc: contentListZH.MODEL_NAME_Gaokao,
+				hoverBg:contentListZH.MODEL_CLASSNAME_Gaokao
 			},
 			{
 				blockPositon: 'blockLargeRightBottom',
 				imgTitle: contentListZH.MODEL_NAME_CLUB_ImgTitle,
-				imgSrc: contentListZH.MODEL_NAME_Club
+				imgSrc: contentListZH.MODEL_NAME_Club,
+				hoverBg:contentListZH.MODEL_CLASSNAME_Club
 			}
 		];
 		return (

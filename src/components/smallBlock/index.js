@@ -1,23 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
+import './style.css';
 
 class SmallBlock extends React.Component {
 
 	render() {
-		const { wrapStyle, blockStyle, text, textStyle } = this.props;
-		return (<div className={wrapStyle}>
-			<div className={blockStyle}>
-				<span className={textStyle}>{text}</span>
+		const { placeHolderName, wrapStyle, blockStyle, imgStyle, imgSrc } = this.props;
+		return (<div className={placeHolderName} style={wrapStyle}>
+			<div style={blockStyle}>
+				<img style={imgStyle} src={imgSrc} alt='title'/>
 			</div>
 		</div>);
 	}
 }
 
-SmallBlock.propTypes = {
-	wrapStyle: PropTypes.object,
-	blockStyle: PropTypes.object,
-	textStyle:PropTypes.object,
-	text:PropTypes.string
-};
+
 
 export default SmallBlock;

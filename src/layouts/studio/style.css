@@ -1,0 +1,8 @@
+.StudioWrap{
+    width: 100%;
+    height: 100%;
+    background: url(../../img/studio.png);
+    display: flex;
+    flex-direction: column;
+    background-size: 100% 100%;
+}

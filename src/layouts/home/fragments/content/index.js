@@ -2,17 +2,24 @@ import React from 'react';
 import { forEach } from 'lodash';
 import LargeBlock from '../../../../components/largeBlock';
 import './style.css';
+import RouteList from '../../../../common/route-list';
+import { NavLink } from 'react-router-dom';
 
 class Content extends React.Component {
 
     renderComponent(items) {
         let arr = [];
         forEach(items, (item, index) => {
-            arr.push(<LargeBlock
+            const path = RouteList[index];
+            const component = <LargeBlock
                 key={index}
                 blockPositon={item.blockPositon}
                 imgTitle={item.imgTitle}
-                imgSrc={item.imgSrc} />);
+                imgSrc={item.imgSrc}
+                hoverBg={item.hoverBg} />;
+            arr.push(<NavLink to={path} key={index}>
+                {component}
+            </NavLink>);
         });
         return arr;
     }

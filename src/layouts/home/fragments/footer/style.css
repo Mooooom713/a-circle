@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(116, 116, 116, 0.5);
 }
 .footerWrap span{
     color: aliceblue;

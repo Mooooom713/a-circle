@@ -8,6 +8,11 @@ let contentListZH = {
     MODEL_NAME_FAMOUS_ImgTitle: '名师',
     MODEL_NAME_GAOKAO_ImgTitle: '高考',
     MODEL_NAME_CLUB_ImgTitle: 'A-Club',
+    MODEL_CLASSNAME_Studio:'studio',
+    MODEL_CLASSNAME_Famous:'famous',
+    MODEL_CLASSNAME_Gaokao:'gaokao',
+    MODEL_CLASSNAME_Club:'club',
+
 
     //Home footer
     HOME_FOOTER_Design: '艺格圈 · DesignBy',

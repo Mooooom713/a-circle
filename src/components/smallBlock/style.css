@@ -1,0 +1,16 @@
+@keyframes placeholderAnimation {
+    from {
+        background: #9c9c9c
+    }
+    to {
+        background: rgb(241, 255, 241)
+    }
+}
+
+.placeholder {
+    width: 325px;
+    height: 247px;
+    background: #9c9c9c;
+    animation: placeholderAnimation 3s;
+    animation-iteration-count: infinite;
+}

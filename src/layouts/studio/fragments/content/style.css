@@ -1,0 +1,19 @@
+.studioContentWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.studioContentWrap .upWrap{
+    display: flex;
+    flex-direction: row;
+}
+
+.studioContentWrap .downWrap{
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+}
