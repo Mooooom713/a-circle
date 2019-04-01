@@ -7,3 +7,7 @@
     padding-right: 5%;
     justify-content: space-between
 }
+
+.headWrap img{
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+.famousDetailWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+.famousDetailWrap .articlesContent  {
+    overflow: auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+.famousDetailWrap .articlesWrap{
+    display: flex;
+    justify-content: center;
+}

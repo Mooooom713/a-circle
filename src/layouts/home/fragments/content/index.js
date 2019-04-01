@@ -3,21 +3,28 @@ import { forEach } from 'lodash';
 import LargeBlock from '../../../../components/largeBlock';
 import './style.css';
 import RouteList from '../../../../common/route-list';
+import { HOME_TO_DETAIL_BLOCK } from '../../../../store/actionType';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-class Content extends React.Component {
+class Content extends React.PureComponent {
 
     renderComponent(items) {
         let arr = [];
         forEach(items, (item, index) => {
-            const path = RouteList[index];
+            const path = RouteList.mainRoute[index];
             const component = <LargeBlock
                 key={index}
                 blockPositon={item.blockPositon}
                 imgTitle={item.imgTitle}
                 imgSrc={item.imgSrc}
                 hoverBg={item.hoverBg} />;
-            arr.push(<NavLink to={path} key={index}>
+            arr.push(<NavLink 
+                to={path} 
+                onClick={() => {
+                    this.props.handleNavToBlock(path);
+                }} 
+                key={index}>
                 {component}
             </NavLink>);
         });
@@ -41,4 +48,17 @@ class Content extends React.Component {
     }
 }
 
-export default Content;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleNavToBlock(path){
+            const action = {
+                type: HOME_TO_DETAIL_BLOCK,
+                prePath: '/',
+                nowPath: path
+            };
+            dispatch(action);
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Content);

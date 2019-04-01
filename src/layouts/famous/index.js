@@ -3,27 +3,27 @@ import Content from './fragments/content';
 import Detail from './fragments/detail';
 import CommonHeader from '../../components/commonHeader';
 import './style.css';
-import BlockConfig from '../../common/studio-block-config';
+import BlockConfig from '../../common/famous-block-config';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { concat, find, includes } from 'lodash';
 import { connect } from 'react-redux';
-import { STUDIO_NAVTO_DETAIL, STUDIO_GO_BACK } from '../../store/actionType';
+import { FAMOUS_NAVTO_DETAIL, FAMOUS_GO_BACK } from '../../store/actionType';
 
-class Studio extends React.Component {
+class Famous extends React.Component {
 
 	/**
 	 * 渲染画室部分首页
 	 */
 	renderContent() {
-		let upItem = concat(BlockConfig.contentConfig[0], BlockConfig.contentConfig[1], BlockConfig.contentConfig[2]);
+        let upItem = concat(BlockConfig.contentConfig[0], BlockConfig.contentConfig[1], BlockConfig.contentConfig[2]);
 		let downItem = concat(BlockConfig.contentConfig[3], BlockConfig.contentConfig[4], BlockConfig.contentConfig[5]);
-		return (<Content
+		return <Content
 			changeRoute={(e)=>{
 				this.props.changeRoute(e);
 			}}
 			upItem={upItem}
 			downItem={downItem}
-		/>);
+		/>;
 	}
 
 	/**
@@ -33,15 +33,13 @@ class Studio extends React.Component {
 		let item = find(BlockConfig.routeConfig, (item)=>{
 			return includes(this.props.nowPath, item.name);
 		});
-		let index = item ? item.index : 0;
-		let queryUrl = BlockConfig.detailConfig[index][this.props.nowPath];
-		return <Detail queryUrl={queryUrl} />;
+        let index = item ? item.index : 0;
+		let queryObj = BlockConfig.detailConfig[index][this.props.nowPath];
+		return <Detail queryObj={queryObj} />;
 	}
 
-	
-
 	render() {
-		return (<div className='StudioWrap'>
+		return (<div className='FamousWrap'>
 			<CommonHeader
 				backImg={require('../../img/icon/back.png')}
 				userImg={require('../../img/signin.png')}
@@ -51,24 +49,24 @@ class Studio extends React.Component {
 				}}/>
 			<Switch>
 				{
-					this.props.nowPath === '/studio' ?
+					this.props.nowPath === '/famous' ?
 					<Route 
 						path={this.props.nowPath} 
 						exact 
 						component={() => this.renderContent()} />
 					:
 					<Route 
-						path={this.props.nowPath} 
+						path={`${this.props.nowPath}/:id`} 
 						component={() => this.renderDetail()}/>
 				}
 			</Switch>
 		</div>);
-	}
+    }
 }
 
 const mapStateToProps = (state) => {
 	return {
-		pageTitle: state.studioConfig.pageTitle[state.studioConfig.index],
+		pageTitle: state.famousConfig.pageTitle[state.famousConfig.index],
 		nowPath: state.nowUrl
 	};
 };
@@ -79,14 +77,16 @@ const mapDispatchToProps = (dispatch) => {
 		 * 跳转到更详情
 		 */
 		changeRoute(path){
-			let index = find(BlockConfig.routeConfig, (item)=>{
+			let item = find(BlockConfig.routeConfig, (item)=>{
 				return includes(path, item.name);
-			}).index;
+			});
+			let index = item ? item.index : 0;
 			const action = {
-				type: STUDIO_NAVTO_DETAIL,
+				type: FAMOUS_NAVTO_DETAIL,
 				navPath: path,
 				pageTitle: BlockConfig.detailConfig[index].pageTitle
 			};
+
 			dispatch(action);
 		},
 		/**
@@ -95,9 +95,10 @@ const mapDispatchToProps = (dispatch) => {
 		goBack(props){
 			let url = window.location.pathname;
 			props.history.goBack();
-			if(url !== '/studio'){
+			if(url !== '/famous'){
 				const action = {
-					type: STUDIO_GO_BACK
+					type: FAMOUS_GO_BACK,
+					articleNavTo: false
 				};
 				dispatch(action);
 			}
@@ -105,4 +106,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Studio));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Famous));

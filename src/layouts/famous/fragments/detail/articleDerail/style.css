@@ -1,0 +1,18 @@
+.articleContentWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    overflow: auto;
+}
+.articleContentWrap .textArticleWrap{
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+}
+.articleContentWrap .textArticleWrap img{
+    width: 20%;
+    height: 5%;
+}

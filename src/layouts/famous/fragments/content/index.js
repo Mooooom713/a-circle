@@ -4,22 +4,20 @@ import { forEach } from 'lodash';
 import SmallBlock from '../../../../components/smallBlock';
 import { NavLink } from 'react-router-dom';
 
-class StudioContent extends React.Component {
+class FamousContent extends React.Component {
 
     renderTemp(items, changeRoute) {
         let arr = [];
         forEach(items, (item, index) => {
-            const temp = <SmallBlock 
-                key={index}
+            const temp = <SmallBlock key={index}
                 wrapStyle={item.wrapStyle}
                 blockStyle={item.blockStyle}
                 imgSrc={item.imgSrc} />;
-            arr.push(<NavLink 
-                key={index}
-                onClick={() => {
+            arr.push(<NavLink key={index} 
+                onClick={()=>{
                     changeRoute(item.path);
-                }}  
-                to={item.path}>
+                }} 
+                to={`${item.path}/${index+1}`}>
                     {temp}
             </NavLink>);
         });
@@ -30,7 +28,7 @@ class StudioContent extends React.Component {
         const { upItem, downItem, changeRoute } = this.props;
         const upWrap = this.renderTemp(upItem, changeRoute);
         const downWrap = this.renderTemp(downItem, changeRoute);
-        return (<div className='studioContentWrap'>
+        return (<div className='famousContentWrap'>
             <div className='upWrap'>
                 {upWrap}
             </div>
@@ -41,4 +39,4 @@ class StudioContent extends React.Component {
     }
 }
 
-export default StudioContent;
+export default FamousContent;

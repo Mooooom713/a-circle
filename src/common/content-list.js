@@ -1,3 +1,10 @@
+/*
+ * @Author: Joie Qin 
+ * @Date: 2019-03-25 10:59:54 
+ * @Last Modified by: Joie Qin
+ * @Last Modified time: 2019-03-29 16:56:59
+ */
+
 let contentListZH = {
     //Home Content
     MODEL_NAME_Studio: require('../img/font/studio.png'),

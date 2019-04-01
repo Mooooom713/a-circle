@@ -1,0 +1,19 @@
+.famousContentWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.famousContentWrap .upWrap{
+    display: flex;
+    flex-direction: row;
+}
+
+.famousContentWrap .downWrap{
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+}

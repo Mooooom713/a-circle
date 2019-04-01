@@ -1,0 +1,21 @@
+.videoWrap{
+    display: inline-block;
+    width: 15%;
+    height: 240px;
+    background: #e5e5e5;
+}
+
+.videoWrap video{
+    display: inline-block;
+    width: 100%;
+    height: 200px;
+}
+
+.videoWrap p{
+    padding-top: 0.4rem;
+    padding-left: 0.4rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0.8rem;
+}
