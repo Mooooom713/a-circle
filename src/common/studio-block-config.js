@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:00:18 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-01 15:30:52
+ * @Last Modified time: 2019-04-02 16:00:25
  */
 
 let BlockConfig = {
@@ -141,27 +141,27 @@ let BlockConfig = {
     detailConfig: [
         {
             pageTitle: require('../img/font/studioModel/studioShuicaiTitle.png'),
-            '/studio/watercolor': '../mock/videoUrl01.json'
+            queryUrl: '../mock/videoUrl01.json'
         },
         {
             pageTitle: require('../img/font/studioModel/studioYouhuaTitle.png'),
-            '/studio/oilpainting': '../mock/videoUrl02.json'
+            queryUrl: '../mock/videoUrl02.json'
         },
         {
             pageTitle: require('../img/font/studioModel/studioManhuaTitle.png'),
-            '/studio/cartoon': '../mock/videoUrl01.json'
+            queryUrl: '../mock/videoUrl01.json'
         },
         {
             pageTitle: require('../img/font/studioModel/studioSuxieTitle.png'),
-            '/studio/sketch': '../mock/videoUrl02.json'
+            queryUrl: '../mock/videoUrl02.json'
         },
         {
             pageTitle: require('../img/font/studioModel/studioSumiaoTitle.png'),
-            '/studio/literary': '../mock/videoUrl01.json'
+            queryUrl: '../mock/videoUrl01.json'
         },
         {
             pageTitle: require('../img/font/studioModel/studioGuohuaTitle.png'),
-            '/studio/traditional': '../mock/videoUrl02.json'
+            queryUrl: '../mock/videoUrl02.json'
         }
     ]
 };

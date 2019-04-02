@@ -2,15 +2,19 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-01 17:40:28
+ * @Last Modified time: 2019-04-02 16:12:54
  */
 import React from 'react';
 import './style.css';
-import ReadMore from '../../../../components/readMore';
-import VideoCard from '../../../../components/videoCard';
+import ReadMore from '../../../../../components/readMore';
+import VideoCard from '../../../../../components/videoCard';
 import { forEach } from 'lodash';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import BlockConfig from '../../../../../common/studio-block-config';
+import { STUDIO_NAVTO_DETAIL } from '../../../../../store/actionType';
 
-class Detail extends React.Component{
+class Detail extends React.PureComponent{
 
     constructor(props){
         super(props);
@@ -21,6 +25,7 @@ class Detail extends React.Component{
                 marginTop : 0
             }
         };
+        this.props.changePageTitle(this.props);
     }
 
     renderRowCard(){
@@ -119,8 +124,8 @@ class Detail extends React.Component{
     }
 
     componentDidMount(){
-        const { queryUrl } = this.props;
-        if(!queryUrl) return;
+        const id = this.props.location.search.split('=')[1];
+        const queryUrl = BlockConfig.detailConfig[id].queryUrl;
         let myOption = {
             method: 'GET'
         };
@@ -141,4 +146,17 @@ class Detail extends React.Component{
     }
 }
 
-export default Detail;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changePageTitle(props){
+            let index = props.location.search.split('=')[1];
+            const action = {
+                type: STUDIO_NAVTO_DETAIL,
+                pageTitle: BlockConfig.detailConfig[index].pageTitle
+            };
+            dispatch(action);
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(Detail));

@@ -2,8 +2,6 @@ import * as ActionTypes from './actionType';
 import { assign } from 'lodash';
 
 const defaultSate = {
-    urlArr: [],
-    nowUrl: window.location.pathname,
     studioConfig: {
         index: 0,
         pageTitle: [
@@ -22,19 +20,10 @@ const defaultSate = {
 };
 
 export default (state = defaultSate, action) => {
-    //HOME
-    if( action.type === ActionTypes.HOME_TO_DETAIL_BLOCK ){
-        let newState = assign({}, state);
-        newState.urlArr.push(action.prePath);
-        newState.nowUrl = action.nowPath;
-        return newState;
-    }
 
     //STUDIO
     if(action.type === ActionTypes.STUDIO_NAVTO_DETAIL){
         let newState = assign({}, state);
-        newState.urlArr.push(state.nowUrl);
-        newState.nowUrl = action.navPath;
         newState.studioConfig.pageTitle.push(action.pageTitle);
         newState.studioConfig.index++;
         return newState;
@@ -42,8 +31,6 @@ export default (state = defaultSate, action) => {
 
     if(action.type === ActionTypes.STUDIO_GO_BACK){
         let newState = assign({}, state);
-        newState.nowUrl = newState.urlArr[newState.urlArr.length-1];
-        newState.urlArr.pop();
         newState.studioConfig.index--;
         newState.studioConfig.pageTitle.pop();
         return newState;
