@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-29 11:10:32 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-01 13:07:39
+ * @Last Modified time: 2019-04-03 13:02:10
  */
 
 import React from 'react';
@@ -17,7 +17,7 @@ const ArticleBlock = (props) => {
         <NavLink 
             to={path}
             onClick={() => {
-                props.navToArticle(path, data);
+                props.navToArticle(data);
             }}>
             <h2>{title}</h2>
         </NavLink>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import { withRouter } from 'react-router-dom';
 
 class ArticleDetail extends React.Component{
 
@@ -17,4 +18,4 @@ class ArticleDetail extends React.Component{
     }
 }
 
-export default ArticleDetail;
+export default withRouter(ArticleDetail);

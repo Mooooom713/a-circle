@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:00:18 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-03-27 23:27:14
+ * @Last Modified time: 2019-04-02 16:58:28
  */
 
 let BlockConfig = {
@@ -141,42 +141,42 @@ let BlockConfig = {
     detailConfig: [
         {
             pageTitle: require('../img/font/famousModel/famousFangao.png'),
-            '/famous/vangogh': {
+            queryOption: {
                 count: 10,
                 page: 1
             }
         },
         {
             pageTitle: require('../img/font/famousModel/famousDafenqi.png'),
-            '/famous/vinci': {
+            queryOption: {
                 count: 1,
                 page: 2
             }
         },
         {
             pageTitle: require('../img/font/famousModel/famousBijiasuo.png'),
-            '/famous/picasso': {
+            queryOption: {
                 count: 2,
                 page: 3
             }
         },
         {
             pageTitle: require('../img/font/famousModel/famousZhangdaqian.png'),
-            '/famous/zhangdaqian': {
+            queryOption: {
                 count: 3,
                 page: 4
             }
         },
         {
             pageTitle: require('../img/font/famousModel/famousQibaishi.png'),
-            '/famous/qibaishi': {
+            queryOption: {
                 count: 16,
                 page: 5
             }
         },
         {
             pageTitle: require('../img/font/famousModel/famousXubeihong.png'),
-            '/famous/xubeihong': {
+            queryOption: {
                 count: 50,
                 page: 6
             }
