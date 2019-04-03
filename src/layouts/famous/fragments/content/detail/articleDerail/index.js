@@ -1,8 +1,18 @@
 import React from 'react';
 import './style.css';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { FAMOUS_NAVTO_ARTICLE } from '../../../../../../store/actionType';
 
 class ArticleDetail extends React.Component{
+
+
+    shouldComponentUpdate(nextProps){
+        if(nextProps.data === this.props.data){
+            return false;
+        }
+        return true;
+    }
 
     render(){
         const { data } = this.props;
@@ -16,6 +26,21 @@ class ArticleDetail extends React.Component{
                 dangerouslySetInnerHTML={{__html:str}}/>
         </div>);
     }
+
+    componentDidMount(){
+        this.props.changeArticlePageTitle();
+    }
 }
 
-export default withRouter(ArticleDetail);
+const mapDispatchToProps = (dispatch) => {
+    return {     
+        changeArticlePageTitle(){
+            const action = {
+                type: FAMOUS_NAVTO_ARTICLE
+            };
+            dispatch(action);
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(ArticleDetail));

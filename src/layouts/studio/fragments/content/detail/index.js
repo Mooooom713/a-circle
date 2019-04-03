@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-02 16:26:22
+ * @Last Modified time: 2019-04-03 16:21:47
  */
 import React from 'react';
 import './style.css';
@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import BlockConfig from '../../../../../common/studio-block-config';
 import { STUDIO_NAVTO_DETAIL } from '../../../../../store/actionType';
 
-class Detail extends React.PureComponent{
+class Detail extends React.Component{
 
     constructor(props){
         super(props);

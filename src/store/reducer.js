@@ -19,6 +19,12 @@ const defaultSate = {
 
 export default (state = defaultSate, action) => {
 
+    //HOME
+    if(action.type === ActionTypes.HOME_TO_DETAIL_BLOCK){
+        let newState = assign({}, state);
+        return newState;
+    }
+
     //STUDIO
     if(action.type === ActionTypes.STUDIO_NAVTO_DETAIL){
         let newState = assign({}, state);
@@ -44,11 +50,8 @@ export default (state = defaultSate, action) => {
 
     if(action.type === ActionTypes.FAMOUS_NAVTO_ARTICLE){
         let newState = assign({}, state);
-        newState.urlArr.push(state.nowUrl);
-        newState.nowUrl = action.navPath;
         newState.famousConfig.pageTitle.push(newState.famousConfig.childrenPageTitle);
         newState.famousConfig.index++;
-        newState.famousConfig.data = action.data;
         return newState;
     }
 

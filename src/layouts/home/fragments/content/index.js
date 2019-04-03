@@ -7,7 +7,7 @@ import { HOME_TO_DETAIL_BLOCK } from '../../../../store/actionType';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class Content extends React.PureComponent {
+class Content extends React.Component {
 
     renderComponent(items) {
         let arr = [];
@@ -22,7 +22,7 @@ class Content extends React.PureComponent {
             arr.push(<NavLink 
                 to={path} 
                 onClick={() => {
-                    this.props.handleNavToBlock(path);
+                    this.props.handleNavToBlock();
                 }} 
                 key={index}>
                 {component}
@@ -50,11 +50,9 @@ class Content extends React.PureComponent {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleNavToBlock(path){
+        handleNavToBlock(){
             const action = {
-                type: HOME_TO_DETAIL_BLOCK,
-                prePath: '/',
-                nowPath: path
+                type: HOME_TO_DETAIL_BLOCK
             };
             dispatch(action);
         }
