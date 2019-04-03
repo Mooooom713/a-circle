@@ -7,18 +7,28 @@ import { connect } from 'react-redux';
 import { FAMOUS_GO_BACK } from '../../store/actionType';
 
 
-const Famous = (props) => {
-	return (<div className='FamousWrap'>
+class Famous extends React.Component{
+
+	shouldComponentUpdate(nextProps){
+		if(nextProps.pageTitle === this.props.pageTitle){
+			return false;
+		}
+		return true;
+	}
+
+	render(){
+		return (<div className='FamousWrap'>
 		<CommonHeader
 			backImg={require('../../img/icon/back.png')}
 			userImg={require('../../img/signin.png')}
-			pageTitle={props.pageTitle}
+			pageTitle={this.props.pageTitle}
 			goBack={()=>{
-				props.goBack(props);
+				this.props.goBack(this.props);
 			}}/>
 		<Content/>
 	</div>);
-};
+	}
+}
 
 const mapStateToProps = (state) => {
 	return {

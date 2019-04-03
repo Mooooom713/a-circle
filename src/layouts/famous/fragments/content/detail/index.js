@@ -38,7 +38,6 @@ class Detail extends React.Component{
      * 名师堂详情页渲染文章摘要块判断逻辑
      */
     renderArticleBlock(){
-        this.props.changePageTitle(this.props);
         if(!this.state.readmore){
             if(this.state.isScroll){
                 let sArr = this.state.data ? this.state.data.slice(0, 2) : [];
@@ -140,9 +139,10 @@ class Detail extends React.Component{
         </Switch>);
     }
 
-    componentDidMount(){
+    componentDidMount(){      
         const id = this.props.location.search.split('=')[1];
         if(!id) return;
+        this.props.changePageTitle(this.props);
         const queryOption = BlockConfig.detailConfig[id].queryOption;
         let myOption = {
             method: 'GET',
