@@ -1,19 +1,24 @@
 import React from 'react';
 import './style.css';
-import ArticleBlock from '../../../../components/articleBlock';
-import ReadMore from '../../../../components/readMore';
+import ArticleBlock from '../../../../../components/articleBlock';
+import ReadMore from '../../../../../components/readMore';
 import ArticleDetail from './articleDerail';
+import BlockConfig from '../../../../../common/famous-block-config';
 import moment from 'moment';
 import { map } from 'lodash';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FAMOUS_NAVTO_ARTICLE } from '../../../../store/actionType';
+import { FAMOUS_NAVTO_DETAIL, FAMOUS_SAVE_DATA } from '../../../../../store/actionType';
 
 class Detail extends React.Component{
 
     constructor(props){
         super(props);
+        let pathname = props.location.pathname;
+        let url = /[0-9]/.test(pathname) ? pathname.substring(0, pathname.length-2): pathname;
+
         this.state = {
+            linkUrl: url,
             readmore: false,
             isScroll: false,
             scrollTop: {
@@ -22,10 +27,18 @@ class Detail extends React.Component{
         };
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextState.data === this.state.data){
+          return false;
+        }
+        return true;
+    }
+
     /**
      * 名师堂详情页渲染文章摘要块判断逻辑
      */
     renderArticleBlock(){
+        this.props.changePageTitle(this.props);
         if(!this.state.readmore){
             if(this.state.isScroll){
                 let sArr = this.state.data ? this.state.data.slice(0, 2) : [];
@@ -49,10 +62,10 @@ class Detail extends React.Component{
                 className='articlesWrap'>
                     <ArticleBlock
                         imgSrc={item.site.icon}
-                        navToArticle={(e, data) => {
-                            this.props.navToArticle(e, data);
+                        navToArticle={(data) => {
+                            this.props.navToArticle(data);
                         }}
-                        path={`${this.props.nowUrl}/${index}`}
+                        path={`${this.state.linkUrl}/${index}`}
                         data={item}
                         title={item.title}
                         time={moment(item.created_at).format('YYYY-MM-DD hh:mm:ss')}
@@ -65,7 +78,7 @@ class Detail extends React.Component{
     /**
      * 处理read more逻辑
      */
-    handleReadMore(){
+    _handleReadMore(){
         this.setState({
             readmore: true,
             scrollTop: {
@@ -99,7 +112,7 @@ class Detail extends React.Component{
                         justifyContent: 'center'
                     }}
                     handleReadMore={() => {
-                        this.handleReadMore();
+                        this._handleReadMore();
                     }}/>
                 :
                 null
@@ -117,55 +130,49 @@ class Detail extends React.Component{
 
     render(){
         return (<Switch>
-            {
-                this.props.articleNavTo ?
-                <Route
-                    path={this.props.nowUrl}
-                    component={() => this.renderArticleDetail()}/>
-                :
-                <Route 
-                    path={this.props.nowUrl} 
-                    component={() => this.renderDetailContent()}/>
-            }
+            <Route
+                path={this.state.linkUrl}
+                exact
+                component={() => this.renderDetailContent()}/>
+            <Route 
+                path={`${this.state.linkUrl}/:number`} 
+                component={() => this.renderArticleDetail()}/>
         </Switch>);
     }
 
     componentDidMount(){
-        if(!this.props.articleNavTo){
-            let { queryObj } = this.props;
-            if(!queryObj) return;
-            let myOption = {
-                method: 'GET',
-                mode: "cors",
-                header: {
-                    Accept: "application/json"
-                }
-            };
-            fetch(`http://gank.io/api/xiandu/data/id/appinn/count/${queryObj.count}/page/${queryObj.page}`, myOption)
-            .then(res => res.json())
-            .then((res) => {
-                if(res.results.length > 2){
-                    this.setState({
-                        isScroll: true,
-                        data: res.results
-                    });
-                }else{
-                    this.setState({
-                        data: res.results
-                    });
-                }
-            })
-            .catch((mes) => {
-                alert(mes);
-            });
-        }  
+        const id = this.props.location.search.split('=')[1];
+        if(!id) return;
+        const queryOption = BlockConfig.detailConfig[id].queryOption;
+        let myOption = {
+            method: 'GET',
+            mode: "cors",
+            header: {
+                Accept: "application/json"
+            }
+        };
+        fetch(`http://gank.io/api/xiandu/data/id/appinn/count/${queryOption.count}/page/${queryOption.page}`, myOption)
+        .then(res => res.json())
+        .then((res) => {
+            if(res.results.length > 2){
+                this.setState({
+                    isScroll: true,
+                    data: res.results
+                });
+            }else{
+                this.setState({
+                    data: res.results
+                });
+            }
+        })
+        .catch((mes) => {
+            alert(mes);
+        });
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        articleNavTo: state.famousConfig.articleNavTo,
-        nowUrl: state.nowUrl,
         data: state.famousConfig.data
     };
 };
@@ -174,14 +181,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         /**
-         * 跳转到单个文章详情
-         * @param {string} path 
+         * 改变title
+         * @param {Object} props 
          */
-        navToArticle(path, data){
+        changePageTitle(props){
+            let index = props.location.search.split('=')[1];
             const action = {
-                type: FAMOUS_NAVTO_ARTICLE,
-                navPath: path,
-                articleNavTo: true,
+                type: FAMOUS_NAVTO_DETAIL,
+                pageTitle: BlockConfig.detailConfig[index].pageTitle
+            };
+            dispatch(action);
+        },
+        navToArticle(data){
+            const action = {
+                type: FAMOUS_SAVE_DATA,
                 data: data
             };
             dispatch(action);

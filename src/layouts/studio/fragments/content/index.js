@@ -2,10 +2,9 @@ import React from 'react';
 import './style.css';
 import { forEach } from 'lodash';
 import SmallBlock from '../../../../components/smallBlock';
-import { NavLink } from 'react-router-dom';
 import { concat } from 'lodash';
 import BlockConfig from '../../../../common/studio-block-config';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { NavLink, Switch, Route, withRouter } from 'react-router-dom';
 import Detail from './detail';
 
 class StudioContent extends React.Component {

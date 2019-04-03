@@ -13,9 +13,7 @@ const defaultSate = {
         pageTitle: [
             require('../img/font/famousTitle.png')
         ],
-        articleNavTo: false,
-        childrenPageTitle: require('../img/font/famousModel/famousDetail.png'),
-        data: []
+        childrenPageTitle: require('../img/font/famousModel/famousDetail.png')
     }
 };
 
@@ -39,8 +37,6 @@ export default (state = defaultSate, action) => {
     //FAMOUS
     if(action.type === ActionTypes.FAMOUS_NAVTO_DETAIL){
         let newState = assign({}, state);
-        newState.urlArr.push(state.nowUrl);
-        newState.nowUrl = action.navPath;
         newState.famousConfig.pageTitle.push(action.pageTitle);
         newState.famousConfig.index++;
         return newState;
@@ -50,7 +46,6 @@ export default (state = defaultSate, action) => {
         let newState = assign({}, state);
         newState.urlArr.push(state.nowUrl);
         newState.nowUrl = action.navPath;
-        newState.famousConfig.articleNavTo = action.articleNavTo;
         newState.famousConfig.pageTitle.push(newState.famousConfig.childrenPageTitle);
         newState.famousConfig.index++;
         newState.famousConfig.data = action.data;
@@ -59,11 +54,14 @@ export default (state = defaultSate, action) => {
 
     if(action.type === ActionTypes.FAMOUS_GO_BACK){
         let newState = assign({}, state);
-        newState.nowUrl = newState.urlArr[newState.urlArr.length-1];
-        newState.urlArr.pop();
         newState.famousConfig.index--;
         newState.famousConfig.pageTitle.pop();
-        newState.famousConfig.articleNavTo = action.articleNavTo;
+        return newState;
+    }
+
+    if(action.type === ActionTypes.FAMOUS_SAVE_DATA){
+        let newState = assign({}, state);
+        newState.famousConfig.data = action.data;
         return newState;
     }
 

@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-02 16:12:54
+ * @Last Modified time: 2019-04-02 16:26:22
  */
 import React from 'react';
 import './style.css';
@@ -148,6 +148,10 @@ class Detail extends React.PureComponent{
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        /**
+         * 改变title
+         * @param {Object} props 
+         */
         changePageTitle(props){
             let index = props.location.search.split('=')[1];
             const action = {
