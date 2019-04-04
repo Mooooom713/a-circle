@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-03 16:21:47
+ * @Last Modified time: 2019-04-04 11:09:37
  */
 import React from 'react';
 import './style.css';
@@ -25,7 +25,6 @@ class Detail extends React.Component{
                 marginTop : 0
             }
         };
-        this.props.changePageTitle(this.props);
     }
 
     renderRowCard(){
@@ -103,7 +102,7 @@ class Detail extends React.Component{
                 this.state.rowNumber > 2 && !this.state.readmore?
                 <ReadMore
                     wrapStyle={{
-                        width: '47rem',
+                        width: '59rem',
                         height: '3rem'
                     }}
                     imgWrap={{
@@ -124,6 +123,7 @@ class Detail extends React.Component{
     }
 
     componentDidMount(){
+        this.props.changePageTitle(this.props);
         const id = this.props.location.search.split('=')[1];
         const queryUrl = BlockConfig.detailConfig[id].queryUrl;
         let myOption = {
