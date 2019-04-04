@@ -16,8 +16,8 @@ class ArticleDetail extends React.Component{
 
     render(){
         const { data } = this.props;
-        let str = data.content.replace(/&lt;/g, '<');
-        str = str.replace(/&gt;/g, '>');
+        let str = data ? data.content.replace(/&lt;/g, '<') : '';
+        str = str ? str.replace(/&gt;/g, '>') : str;
         
         return (<div className='articleContentWrap'>
             <h2>{data.title}</h2>

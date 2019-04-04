@@ -12,3 +12,5 @@ export const FAMOUS_SAVE_DATA  = 'famous_save_data';
 
 //Gaokao
 export const GAOKAO_GO_BACK = 'gaokao_go_back';
+export const GAOKAO_NAVTO_ARTICLE = 'gaokao_navto_articel';
+export const GAOKAO_SAVE_DATA = 'gaokao_save_data';

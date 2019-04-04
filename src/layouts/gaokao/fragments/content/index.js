@@ -5,6 +5,9 @@ import { map } from 'lodash';
 import moment from 'moment';
 import ArticleBlock from '../../../../components/articleBlock';
 import ReadMore from '../../../../components/readMore';
+import ArticleDetail from './detail';
+import { GAOKAO_SAVE_DATA } from '../../../../store/actionType';
+import { connect } from 'react-redux';
 
 class Content extends React.Component{
 
@@ -43,11 +46,11 @@ class Content extends React.Component{
                 className='articlesWrap'>
                     <ArticleBlock
                         imgSrc={item.site.icon}
-                        navToArticle={(data) => {
-                            this.props.navToArticle(data);
-                        }}
                         path={`/gaokao/${index}`}
                         data={item}
+                        navToArticle={(data) =>{
+                            this.props.saveData(data);
+                        }}
                         title={item.title}
                         time={moment(item.created_at).format('YYYY-MM-DD hh:mm:ss')}
                         subTitle={item.site.desc}/>
@@ -79,7 +82,7 @@ class Content extends React.Component{
                         justifyContent: 'center'
                     }}
                     handleReadMore={() => {
-                        this._handleReadMore();
+                        this._handleReadMore(this.state.data);
                     }}/>
                 :
                 null
@@ -99,9 +102,15 @@ class Content extends React.Component{
         });
     }
 
+    renderDetail(){
+        return <ArticleDetail />;
+    }
+
     shouldComponentUpdate(nextProps, nextState){
-        if(nextState.data !== this.state.data || nextState.readmore !== this.state.readmore){
-          return true;
+        if(nextState.data !== this.state.data){
+            return true;
+        }else if(nextState.readmore !== this.state.readmore){
+            return true;
         }
         return false;
     }
@@ -109,6 +118,7 @@ class Content extends React.Component{
     render(){
         return (<Switch>
             <Route path='/gaokao' exact component={() => this.renderContent()}/>
+            <Route path='/gaokao/:id' exact component={() => this.renderDetail()}/>
         </Switch>);
     }
 
@@ -121,7 +131,6 @@ class Content extends React.Component{
         .then(res => res.json())
         .then((json) => {
             let data = json.results;
-            console.log(data);
             this.setState({
                 rowNumber: Math.ceil(data.length / 3),
                 data: data,
@@ -134,4 +143,16 @@ class Content extends React.Component{
     }
 }
 
-export default withRouter(Content);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        saveData(data){
+            const action = {
+                type: GAOKAO_SAVE_DATA,
+                data: data
+            };
+            dispatch(action);
+        }
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(Content));
