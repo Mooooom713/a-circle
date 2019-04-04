@@ -2,6 +2,9 @@ import React from 'react';
 import './style.css';
 import CommonHeader from '../../components/commonHeader';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import { GAOKAO_GO_BACK } from '../../store/actionType';
+import Content from './fragments/content';
 
 class GaoKao extends React.Component{
     render(){
@@ -13,31 +16,31 @@ class GaoKao extends React.Component{
 				goBack={()=>{
 					this.props.goBack(this.props);
 				}}/>
+            <Content/>
         </div>);
-    }
-
-    componentDidMount(){
-        let myOption = {
-            method: 'GET',
-            mode: 'cors'
-        };
-        fetch('http://gank.io/api/xiandu/data/id/appinn/count/3/page/5', myOption)
-        .then(res => res.json())
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((mesg) => {
-            alert(mesg);
-        });
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        pageTitle: state.gaokaoConfig.pageTitle[state.gaokaoConfig.index],
-        nowUrl: state.nowUrl
+        pageTitle: state.gaokaoConfig.pageTitle[state.gaokaoConfig.index]
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        goBack(props){
+            props.history.goBack();
+			let url = window.location.pathname;
+			if(url !== '/gaokao'){
+				const action = {
+					type: GAOKAO_GO_BACK
+				};
+				dispatch(action);
+			}
+        }
     };
 };
 
 
-export default connect(mapStateToProps, null)(GaoKao);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(GaoKao));

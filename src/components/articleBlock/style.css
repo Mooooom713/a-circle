@@ -1,8 +1,8 @@
 .articleWrap{
     background: rgba(0, 0, 0, 0.4);
     display: flex;
-    width: 60%;
-    height: 13rem;
+    width: 58%;
+    height: 12rem;
     flex-direction: row;  
     justify-content: center;
     margin-bottom: 2rem;
@@ -23,7 +23,15 @@
     overflow: hidden
 }
 
-.articleWrap div h2{
+.articleWrap a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.articleWrap a:hover{
+    color: #3891ec;
+}
+
+.articleWrap div h3{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden

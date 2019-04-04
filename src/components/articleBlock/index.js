@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-29 11:10:32 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-03 13:02:10
+ * @Last Modified time: 2019-04-04 11:16:09
  */
 
 import React from 'react';
@@ -19,7 +19,7 @@ const ArticleBlock = (props) => {
             onClick={() => {
                 props.navToArticle(data);
             }}>
-            <h2>{title}</h2>
+            <h3>{title}</h3>
         </NavLink>
         <p className='timeStyle'>{time}</p>
         <p className='subTitleStyle'>{subTitle}</p>

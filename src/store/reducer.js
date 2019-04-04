@@ -13,7 +13,14 @@ const defaultSate = {
         pageTitle: [
             require('../img/font/famousTitle.png')
         ],
-        childrenPageTitle: require('../img/font/famousModel/famousDetail.png')
+        childrenPageTitle: require('../img/font/famousDetail.png')
+    },
+    gaokaoConfig: {
+        index: 0,
+        pageTitle: [
+            require('../img/font/gaokaoTitle.png')
+        ],
+        childrenPageTitle: require('../img/font/famousDetail.png')
     }
 };
 
@@ -65,6 +72,14 @@ export default (state = defaultSate, action) => {
     if(action.type === ActionTypes.FAMOUS_SAVE_DATA){
         let newState = assign({}, state);
         newState.famousConfig.data = action.data;
+        return newState;
+    }
+
+    //GAOKAO
+    if(action.type === ActionTypes.GAOKAO_GO_BACK){
+        let newState = assign({}, state);
+        newState.gaokaoConfig.index--;
+        newState.gaokaoConfig.pageTitle.pop();
         return newState;
     }
 

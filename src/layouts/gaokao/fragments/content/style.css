@@ -1,0 +1,17 @@
+.gaokaoDetailWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+.gaokaoDetailWrap .articlesContent  {
+    overflow: auto;
+    width: 100%;
+    overflow-x: hidden;
+}
+.gaokaoDetailWrap .articlesWrap{
+    display: flex;
+    justify-content: center;
+}

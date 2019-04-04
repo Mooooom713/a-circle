@@ -27,13 +27,6 @@ class Detail extends React.Component{
         };
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        if(nextState.data === this.state.data){
-          return false;
-        }
-        return true;
-    }
-
     /**
      * 名师堂详情页渲染文章摘要块判断逻辑
      */
@@ -100,7 +93,7 @@ class Detail extends React.Component{
                 !this.state.readmore && this.state.isScroll?
                 <ReadMore
                     wrapStyle={{
-                        width: '60%',
+                        width: '58%',
                         height: '3rem'
                     }}
                     imgWrap={{
@@ -127,6 +120,22 @@ class Detail extends React.Component{
         return <ArticleDetail data={this.props.data}/>;
     }
 
+    /**
+     * 通过钩子函数优化性能
+     * @param {Object} nextProps 
+     * @param {Object} nextState 
+     */
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextState.data !== this.state.data || nextState.readmore !== this.state.readmore){
+          return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 主要负责渲染的函数
+     */
     render(){
         return (<Switch>
             <Route
@@ -139,6 +148,9 @@ class Detail extends React.Component{
         </Switch>);
     }
 
+    /**
+     * 组件挂载到dom之后发起异步请求
+     */
     componentDidMount(){      
         const id = this.props.location.search.split('=')[1];
         if(!id) return;
