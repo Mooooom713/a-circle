@@ -83,5 +83,18 @@ export default (state = defaultSate, action) => {
         return newState;
     }
 
+    if(action.type === ActionTypes.GAOKAO_NAVTO_ARTICLE){
+        let newState = assign({}, state);
+        newState.gaokaoConfig.index++;
+        newState.gaokaoConfig.pageTitle.push(newState.gaokaoConfig.childrenPageTitle);
+        return newState;
+    }
+
+    if(action.type === ActionTypes.GAOKAO_SAVE_DATA){
+        let newState = assign({}, state);
+        newState.gaokaoConfig.data = action.data;
+        return newState;
+    }
+
     return state;
 };

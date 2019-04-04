@@ -7,10 +7,13 @@
     justify-content:center;
     overflow: auto;
 }
+.articleContentWrap h2{
+    margin-top: 2rem;
+}
+
 .articleContentWrap .textArticleWrap{
     width: 60%;
     height: 100%;
-    overflow: auto;
 }
 .articleContentWrap .textArticleWrap img{
     width: 20%;
