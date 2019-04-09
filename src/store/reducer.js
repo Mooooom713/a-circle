@@ -2,6 +2,8 @@ import * as ActionTypes from './actionType';
 import { assign } from 'lodash';
 
 const defaultSate = {
+    username: localStorage.username ? localStorage.username : '',
+    userid: localStorage.userid ? localStorage.userid : '',
     studioConfig: {
         index: 0,
         pageTitle: [
@@ -21,6 +23,12 @@ const defaultSate = {
             require('../img/font/gaokaoTitle.png')
         ],
         childrenPageTitle: require('../img/font/famousDetail.png')
+    },
+    clubConfig: {
+        index: 0,
+        pageTitle: [
+            require('../img/font/clubTitle.png')
+        ]
     }
 };
 
@@ -93,6 +101,14 @@ export default (state = defaultSate, action) => {
     if(action.type === ActionTypes.GAOKAO_SAVE_DATA){
         let newState = assign({}, state);
         newState.gaokaoConfig.data = action.data;
+        return newState;
+    }
+
+    //Sign in
+    if(action.type === ActionTypes.SIGNIN_LOGIN_STATUS_CHANGE){
+        let newState = assign({}, state);
+        newState.username = action.username;
+        newState.userid = action.userid;
         return newState;
     }
 

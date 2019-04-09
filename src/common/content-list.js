@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 10:59:54 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-03-29 16:56:59
+ * @Last Modified time: 2019-04-08 23:26:45
  */
 
 let contentListZH = {
@@ -24,7 +24,20 @@ let contentListZH = {
     //Home footer
     HOME_FOOTER_Design: '艺格圈 · DesignBy',
     HOME_FOOTER_Auhor: 'Joie Qin',
-    HOME_FOOTER_Common: 'Copyright  ©  2018  All  Right  Reserved'
+    HOME_FOOTER_Common: 'Copyright  ©  2018  All  Right  Reserved',
+
+    //CLUB
+    CLUB_PLACEHOLDER: '请输入内容...',
+    CLUB_BUTTON_TEXT: '发表',
+
+    //LOGIN
+    LOGIN_SIGNIN_USER_NAME_PLACEHOLDER: '请输入用户名',
+    LOGIN_SIGNIN_PASSWORD_PLACEHOLDER: '请输入密码',
+    LOGIN_SIGNIN_REMEMBER: '记住我',
+    LOGIN_SIGNIN_USERNAME_ERROR_TEXT: '用户名不超过8字符只能为字母或数字且不能为空',
+    LOGIN_SIGNIN_PASSWORD_ERROR_TEXT: `密码不超过10字符、不能为空、中文或非法字符( ' 、 " 或 ${'`'} )`,
+    LOGIN_SIGNUP_PASSWORD_PLACEHOLDER_COMFIRM: '请再次输入密码'
+
 };
 
 export default contentListZH;
