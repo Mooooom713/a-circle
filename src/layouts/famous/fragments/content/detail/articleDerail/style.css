@@ -1,14 +1,14 @@
 .articleContentWrap{
     flex: 13;
-    background: rgba(116, 116, 116, 0.5);
+    background: rgba(116, 116, 116, 0.5);  
+    overflow-y: auto;
+}
+.articleContentWrap .articleContent{
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:center;
-    overflow: auto;
-}
-.articleContentWrap h2{
-    margin-top: 2rem;
 }
 
 .articleContentWrap .textArticleWrap{

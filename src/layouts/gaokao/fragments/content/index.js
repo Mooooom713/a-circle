@@ -15,10 +15,7 @@ class Content extends React.Component{
         super(props);
         this.state = {
             readmore: false,
-            isScroll: false,
-            scrollTop: {
-                marginTop: 0
-            }
+            isScroll: false
         };
     }
 
@@ -64,29 +61,31 @@ class Content extends React.Component{
     renderContent(){
         const block = this.renderLogicContent();
         return (<div className='gaokaoDetailWrap'>
-            <div className='articlesContent' style={this.state.scrollTop}>
-                {block}
+            <div className='gaokaoDetailContent'>
+                <div className='articlesContent'>
+                    {block}
+                </div>
+                {
+                    !this.state.readmore && this.state.isScroll?
+                    <ReadMore
+                        wrapStyle={{
+                            width: '58%',
+                            height: '3rem'
+                        }}
+                        imgWrap={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        handleReadMore={() => {
+                            this._handleReadMore(this.state.data);
+                        }}/>
+                    :
+                    null
+                }
             </div>
-            {
-                !this.state.readmore && this.state.isScroll?
-                <ReadMore
-                    wrapStyle={{
-                        width: '58%',
-                        height: '3rem'
-                    }}
-                    imgWrap={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}
-                    handleReadMore={() => {
-                        this._handleReadMore(this.state.data);
-                    }}/>
-                :
-                null
-            }
         </div>);
     }
 
@@ -95,10 +94,7 @@ class Content extends React.Component{
      */
     _handleReadMore(){
         this.setState({
-            readmore: true,
-            scrollTop: {
-                marginTop: '2rem'
-            }
+            readmore: true
         });
     }
 

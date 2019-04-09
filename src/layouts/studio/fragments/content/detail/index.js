@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-04 11:09:37
+ * @Last Modified time: 2019-04-09 12:22:11
  */
 import React from 'react';
 import './style.css';
@@ -20,10 +20,7 @@ class Detail extends React.Component{
         super(props);
         this.state = {
             rowNumber: 0,
-            readmore: false,
-            isScoll:{
-                marginTop : 0
-            }
+            readmore: false
         };
     }
 
@@ -85,40 +82,38 @@ class Detail extends React.Component{
 
     handleReadMore(){
         this.setState({
-            readmore:true,
-            isScoll: {
-                marginTop: '2rem'
-            }
+            readmore:true
         });
     }
 
     render(){
         const cards = this.renderRowCard();
         return (<div className='studioDetailWrap'>
-            <div className='cardsWrap' style={this.state.isScoll}>
-                { cards }
+            <div className='studioDetailContent'>
+                <div className='cardsWrap'>
+                    { cards }
+                </div>
+                {
+                    this.state.rowNumber > 2 && !this.state.readmore?
+                    <ReadMore
+                        wrapStyle={{
+                            width: '59rem',
+                            height: '3rem'
+                        }}
+                        imgWrap={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        handleReadMore={() => {
+                            this.handleReadMore();
+                        }}/>
+                    :
+                    null
+                }
             </div>
-            {
-                this.state.rowNumber > 2 && !this.state.readmore?
-                <ReadMore
-                    wrapStyle={{
-                        width: '59rem',
-                        height: '3rem'
-                    }}
-                    imgWrap={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}
-                    handleReadMore={() => {
-                        this.handleReadMore();
-                    }}/>
-                :
-                null
-            }
-            
         </div>);
     }
 

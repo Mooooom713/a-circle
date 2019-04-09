@@ -20,10 +20,12 @@ class ArticleDetail extends React.Component{
         str = str ? str.replace(/&gt;/g, '>') : str;
         
         return (<div className='articleContentWrap'>
+            <div className='articleContent'>
             <h2>{data.title}</h2>
-            <div 
+            <div
                 className='textArticleWrap' 
                 dangerouslySetInnerHTML={{__html:str}}/>
+            </div>
         </div>);
     }
 

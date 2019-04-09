@@ -2,8 +2,8 @@ import * as ActionTypes from './actionType';
 import { assign } from 'lodash';
 
 const defaultSate = {
-    username: localStorage.username ? localStorage.username : '',
-    userid: localStorage.userid ? localStorage.userid : '',
+    username: localStorage.aCircleUsername ? localStorage.aCircleUsername : '',
+    userid: localStorage.aCircleUserid ? localStorage.aCircleUserid : '',
     studioConfig: {
         index: 0,
         pageTitle: [

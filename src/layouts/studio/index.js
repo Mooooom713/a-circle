@@ -6,10 +6,12 @@ import { connect } from 'react-redux';
 import { STUDIO_GO_BACK } from '../../store/actionType';
 
 const Studio = (props) => {
+	const userImg = props.username && props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
 	return (<div className='StudioWrap'>
 		<CommonHeader
 			backImg={require('../../img/icon/back.png')}
-			userImg={require('../../img/signin.png')}
+			userImg={userImg}
+			username={props.username}
 			pageTitle={props.pageTitle}
 			goBack={()=>{
 				props.goBack(props);
@@ -20,7 +22,9 @@ const Studio = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		pageTitle: state.studioConfig.pageTitle[state.studioConfig.index]
+		pageTitle: state.studioConfig.pageTitle[state.studioConfig.index],
+		username: state.username,
+        userid: state.userid
 	};
 };
 

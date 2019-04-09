@@ -6,24 +6,27 @@ import {withRouter} from 'react-router-dom';
 import { GAOKAO_GO_BACK } from '../../store/actionType';
 import Content from './fragments/content';
 
-class GaoKao extends React.Component{
-    render(){
-        return (<div className='gaokaoWrap'>
-            <CommonHeader
-				backImg={require('../../img/icon/back.png')}
-				userImg={require('../../img/signin.png')}
-				pageTitle={this.props.pageTitle}
-				goBack={()=>{
-					this.props.goBack(this.props);
-				}}/>
-            <Content/>
-        </div>);
-    }
-}
+
+const GaoKao = (props) => {
+    const userImg = props.username && props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
+    return (<div className='gaokaoWrap'>
+        <CommonHeader
+            backImg={require('../../img/icon/back.png')}
+            userImg={userImg}
+            username={props.username}
+            pageTitle={props.pageTitle}
+            goBack={()=>{
+                props.goBack(props);
+            }}/>
+        <Content/>
+    </div>);
+};
 
 const mapStateToProps = (state) => {
     return {
-        pageTitle: state.gaokaoConfig.pageTitle[state.gaokaoConfig.index]
+        pageTitle: state.gaokaoConfig.pageTitle[state.gaokaoConfig.index],
+        username: state.username,
+        userid: state.userid
     };
 };
 

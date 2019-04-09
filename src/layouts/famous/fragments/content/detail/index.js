@@ -20,10 +20,7 @@ class Detail extends React.Component{
         this.state = {
             linkUrl: url,
             readmore: false,
-            isScroll: false,
-            scrollTop: {
-                marginTop: 0
-            }
+            isScroll: false
         };
     }
 
@@ -72,10 +69,7 @@ class Detail extends React.Component{
      */
     _handleReadMore(){
         this.setState({
-            readmore: true,
-            scrollTop: {
-                marginTop: '2rem'
-            }
+            readmore: true
         });
     }
 
@@ -86,29 +80,31 @@ class Detail extends React.Component{
     renderDetailContent(){
         const block = this.renderArticleBlock();
         return (<div className='famousDetailWrap'>
-            <div className='articlesContent' style={this.state.scrollTop}>
-                {block}
+            <div className='famousDetailContent'>
+                <div className='articlesContent'>
+                    {block}
+                </div>
+                {
+                    !this.state.readmore && this.state.isScroll?
+                    <ReadMore
+                        wrapStyle={{
+                            width: '58%',
+                            height: '3rem'
+                        }}
+                        imgWrap={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        handleReadMore={() => {
+                            this._handleReadMore();
+                        }}/>
+                    :
+                    null
+                }
             </div>
-            {
-                !this.state.readmore && this.state.isScroll?
-                <ReadMore
-                    wrapStyle={{
-                        width: '58%',
-                        height: '3rem'
-                    }}
-                    imgWrap={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}
-                    handleReadMore={() => {
-                        this._handleReadMore();
-                    }}/>
-                :
-                null
-            }
         </div>);
     }
 

@@ -17,10 +17,12 @@ class Famous extends React.Component{
 	}
 
 	render(){
+		const userImg = this.props.username && this.props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
 		return (<div className='FamousWrap'>
 		<CommonHeader
 			backImg={require('../../img/icon/back.png')}
-			userImg={require('../../img/signin.png')}
+			userImg={userImg}
+			username={this.props.username}
 			pageTitle={this.props.pageTitle}
 			goBack={()=>{
 				this.props.goBack(this.props);
@@ -32,7 +34,9 @@ class Famous extends React.Component{
 
 const mapStateToProps = (state) => {
 	return {
-		pageTitle: state.famousConfig.pageTitle[state.famousConfig.index]
+		pageTitle: state.famousConfig.pageTitle[state.famousConfig.index],
+		username: state.username,
+        userid: state.userid
 	};
 };
 

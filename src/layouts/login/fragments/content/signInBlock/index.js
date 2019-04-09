@@ -5,6 +5,7 @@ import { includes } from 'lodash';
 import fetchUrl from '../../../../../common/collection-fetch-url';
 import { connect } from 'react-redux';
 import { SIGNIN_LOGIN_STATUS_CHANGE } from '../../../../../store/actionType';
+import { withRouter } from 'react-router-dom';
  
 class SignInBlock extends React.Component{
 
@@ -25,7 +26,8 @@ class SignInBlock extends React.Component{
         let reg = /^[0-9a-zA-Z]*$/g;
         if(!reg.test(value) || !value || value.length > 8){
             this.setState({
-                userNameError: 'inputerror'
+                userNameError: 'inputerror',
+                username: value
             });
         }else{
             this.setState({
@@ -39,7 +41,8 @@ class SignInBlock extends React.Component{
         let value = e.target.value;
         if(value.charCodeAt() > 255 || !value || includes(value, '`') || includes(value, `'`)|| includes(value, '"') || value.length > 10){
             this.setState({
-                passwordError: 'inputerror'
+                passwordError: 'inputerror',
+                password: value
             });
         }else{
             this.setState({
@@ -67,16 +70,22 @@ class SignInBlock extends React.Component{
             .then(res => res.json())
             .then(json => {
                 if(rememberme){
-                    localStorage.username = json.NickUserName;
-                    localStorage.userid = json.UserId;
+                    localStorage.aCircleUsername = json.NickUserName;
+                    localStorage.aCircleUserid = json.UserId;
                 }else{
-                    sessionStorage.username = json.NickUserName;
-                    sessionStorage.userid = json.UserId;
+                    sessionStorage.aCircleUsername = json.NickUserName;
+                    sessionStorage.aCircleUserid = json.UserId;
                     this.props.saveLoginStatus();
                 }
+                this.props.history.goBack();
             })
             .catch(mesg => {
                 alert(mesg);
+            });
+
+            this.setState({
+                username: '',
+                password: ''
             });
         }
     }
@@ -99,7 +108,8 @@ class SignInBlock extends React.Component{
                         this.usernameCheck(e);
                     }}
                     className={this.state.userNameError}
-                    type='text' 
+                    type='text'
+                    value={this.state.username}
                     placeholder={contentListZH.LOGIN_SIGNIN_USER_NAME_PLACEHOLDER}/>
                 <input 
                     onChange={(e) => {
@@ -107,6 +117,7 @@ class SignInBlock extends React.Component{
                     }}
                     className={this.state.passwordError}
                     type='password' 
+                    value={this.state.password}
                     placeholder={contentListZH.LOGIN_SIGNIN_PASSWORD_PLACEHOLDER}/>
             </div>
             <div>
@@ -132,12 +143,12 @@ const mapDispatchToProps = (dispatch) => {
         saveLoginStatus(){
             const action = {
                 type: SIGNIN_LOGIN_STATUS_CHANGE,
-                username: sessionStorage.username,
-                userid: sessionStorage.userid
+                username: sessionStorage.aCircleUsername,
+                userid: sessionStorage.aCircleUserid
             };
             dispatch(action);
         }
     };
 };
 
-export default connect(null, mapDispatchToProps)(SignInBlock);
+export default connect(null, mapDispatchToProps)(withRouter(SignInBlock));
