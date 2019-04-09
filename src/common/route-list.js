@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:00:03 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-03-27 15:52:22
+ * @Last Modified time: 2019-04-08 13:23:22
  */
 
 let RouteList = {
@@ -11,6 +11,7 @@ let RouteList = {
         '/famous',
         '/gaokao',
         '/club',
+        '/login',
         '/'
     ],
     studioRoute: [

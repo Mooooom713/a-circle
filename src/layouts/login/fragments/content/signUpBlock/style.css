@@ -1,0 +1,55 @@
+.signupblockWrap{
+    width: 60%;    
+    height: 60%;
+}
+
+.signupblockWrap .inputWrap{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signupblockWrap .inputWrap input{
+    width: 90%;
+    height: 2.6rem;
+    outline: none;
+    border: 0;
+}
+
+.signupblockWrap .inputWrap input:nth-child(1){
+    background: #fff url(../../../../../img/icon/user.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+}
+
+.signupblockWrap .inputWrap input:nth-child(2){
+    background: #fff url(../../../../../img/icon/pass.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+    margin-top: 2rem;
+}
+
+.signupblockWrap .inputWrap input:nth-child(3){
+    background: #fff url(../../../../../img/icon/pass.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+    margin-top: 2rem;
+}
+
+.signupblockWrap .inputWrap button{
+    margin-top: 8%;
+    width: 100%;
+    height: 2.6rem;
+    background: #fff url(../../../../../img/font/register.png) no-repeat;
+    background-position: center center;
+    border: none;
+    outline: none;
+    background-size: 14% 40%;
+    cursor: pointer;
+    padding: 0 1.3rem;
+}

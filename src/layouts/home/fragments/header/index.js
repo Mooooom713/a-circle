@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
 
@@ -39,24 +40,28 @@ class Header extends React.Component {
     render() {
         return (
             <div className='headWrap'>
-                <img
-                    onMouseOver={() => {
-                        this.onMouseEnter();
-                    }}
-                    onMouseOut={() => {
-                        this.onMouseLeave();
-                    }}
-                    src={this.state.logSrc}
-                    alt="model" />
-                <img
-                    onMouseOver={() => {
-                        this.onSignMouseEnter();
-                    }}
-                    onMouseOut={() => {
-                        this.onSignMouseLeave();
-                    }}
-                    src={this.state.signSrc}
-                    alt="model" />
+                <NavLink to='/'>
+                    <img
+                        onMouseOver={() => {
+                            this.onMouseEnter();
+                        }}
+                        onMouseOut={() => {
+                            this.onMouseLeave();
+                        }}
+                        src={this.state.logSrc}
+                        alt="model" />
+                </NavLink>
+                <NavLink to='/login'>
+                    <img
+                        onMouseOver={() => {
+                            this.onSignMouseEnter();
+                        }}
+                        onMouseOut={() => {
+                            this.onSignMouseLeave();
+                        }}
+                        src={this.state.signSrc}
+                        alt="model" />
+                </NavLink>
             </div>
         );
     }

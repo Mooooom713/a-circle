@@ -1,0 +1,7 @@
+.loginHeaderWrap{
+    background: rgba(00, 00, 00, 0.6);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
