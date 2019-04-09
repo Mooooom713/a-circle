@@ -15,3 +15,15 @@
 .commonHeadWrap .backIcon{
     cursor: pointer;
 }
+
+.commonHeadWrap a{
+    text-decoration: none;
+}
+
+.commonHeadWrap a img{
+    vertical-align: middle;
+}
+
+.commonHeadWrap a span{
+    color: #F4A300;
+}

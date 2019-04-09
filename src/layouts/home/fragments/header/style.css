@@ -11,3 +11,15 @@
 .headWrap img{
     cursor: pointer;
 }
+
+.headWrap a{
+    text-decoration: none;
+}
+
+.headWrap a img{
+    vertical-align: middle;
+}
+
+.headWrap a span{
+    color: #F4A300;
+}

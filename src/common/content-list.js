@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 10:59:54 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-08 23:26:45
+ * @Last Modified time: 2019-04-09 13:50:39
  */
 
 let contentListZH = {
@@ -36,6 +36,7 @@ let contentListZH = {
     LOGIN_SIGNIN_REMEMBER: '记住我',
     LOGIN_SIGNIN_USERNAME_ERROR_TEXT: '用户名不超过8字符只能为字母或数字且不能为空',
     LOGIN_SIGNIN_PASSWORD_ERROR_TEXT: `密码不超过10字符、不能为空、中文或非法字符( ' 、 " 或 ${'`'} )`,
+    LOGIN_SIGNUP_PASSWORD_ERROR_TEXT: '密码与之前不一致',
     LOGIN_SIGNUP_PASSWORD_PLACEHOLDER_COMFIRM: '请再次输入密码'
 
 };

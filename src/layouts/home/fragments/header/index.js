@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
 
@@ -37,7 +38,32 @@ class Header extends React.Component {
         });
     }
 
+    renderSignin(){
+        return (<NavLink to='/login'>
+            <img
+                onMouseOver={() => {
+                    this.onSignMouseEnter();
+                }}
+                onMouseOut={() => {
+                    this.onSignMouseLeave();
+                }}
+                src={this.state.signSrc}
+                alt="model" />
+        </NavLink>);
+    }
+
+    renderUser(){
+        return (<NavLink to='/user'>
+            <img
+                style={{width:'2rem', height:'2rem'}}
+                src={require('../../../../img/icon/usericon.png')}
+                alt="model" />
+            <span>{this.props.username}</span>
+        </NavLink>);
+    }
+
     render() {
+        const userPart = this.props.username && this.props.userid ? this.renderUser() : this.renderSignin();
         return (
             <div className='headWrap'>
                 <NavLink to='/'>
@@ -51,20 +77,17 @@ class Header extends React.Component {
                         src={this.state.logSrc}
                         alt="model" />
                 </NavLink>
-                <NavLink to='/login'>
-                    <img
-                        onMouseOver={() => {
-                            this.onSignMouseEnter();
-                        }}
-                        onMouseOut={() => {
-                            this.onSignMouseLeave();
-                        }}
-                        src={this.state.signSrc}
-                        alt="model" />
-                </NavLink>
+                {userPart}
             </div>
         );
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        username: state.username,
+        userid: state.userid
+    };
+};
+
+export default connect(mapStateToProps, null)(Header);
