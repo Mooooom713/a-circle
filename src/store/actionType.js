@@ -15,5 +15,8 @@ export const GAOKAO_GO_BACK = 'gaokao_go_back';
 export const GAOKAO_NAVTO_ARTICLE = 'gaokao_navto_articel';
 export const GAOKAO_SAVE_DATA = 'gaokao_save_data';
 
+//Club
+export const CLUB_CHANGE_ALERTDATA = 'club_change_alertdata';
+
 //SignIn
 export const SIGNIN_LOGIN_STATUS_CHANGE = 'signin_login_status_change';

@@ -5,6 +5,10 @@ import MessageArea from './messageArea';
 import ReadMore from '../../../components/readMore';
 import fetchUrl from '../../../common/collection-fetch-url';
 import { map } from 'lodash';
+import AlertBox from '../../../components/alertBox';
+import contentListZH from '../../../common/content-list';
+import { connect } from 'react-redux';
+import { CLUB_CHANGE_ALERTDATA } from '../../../store/actionType';
 
 class Content extends React.Component{
 
@@ -37,6 +41,17 @@ class Content extends React.Component{
         });
     }
 
+    
+    clickClose(){
+        let isOpen = {
+            display: 'none'
+        };
+        this.props.handleChangeMesg('', isOpen, true);
+
+        this._toFetch();
+    }
+
+
     render(){
         const commentContent = this.state.data.length > 0 ? this.renderComment() : null;
         return (<div className='clubDerailWrap'>
@@ -66,16 +81,26 @@ class Content extends React.Component{
                     null
                 }
             </div>
+            <AlertBox 
+                isOpen={this.props.isOpen} 
+                text={this.props.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>
         </div>);
     }
 
-    componentDidMount(){
+    _toFetch(){
         let myOption = {
             method: 'GET'
         };
         fetch(fetchUrl.commentList, myOption)
         .then(res => res.json())
         .then(json => {
+            json = json.reverse();
             const showData = json.length > 1 ? json.slice(0, 1) : json;
             this.setState({
                 data: json,
@@ -84,9 +109,39 @@ class Content extends React.Component{
             });
         })
         .catch((mesg) => {
-            alert(mesg);
+            let isOpen = {
+                display: 'flex'
+            };
+            let error = contentListZH.REQUEST_EXCEPTION;
+            this.props.handleChangeMesg(error, isOpen, false);
         });
     }
+
+    componentDidMount(){
+        this._toFetch();
+    }
+
 }
 
-export default Content;
+const mapStateToProps = (state) => {
+    return {
+        isOpen: state.clubConfig.isOpen,
+        mesg: state.clubConfig.mesg
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleChangeMesg(mesg, isOpen, isClose){
+            const action = {
+                type: CLUB_CHANGE_ALERTDATA,
+                mesg: mesg,
+                isOpen: isOpen,
+                isClose: isClose
+            };
+            dispatch(action);
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:04:16 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-09 12:22:11
+ * @Last Modified time: 2019-04-09 16:53:30
  */
 import React from 'react';
 import './style.css';
@@ -13,6 +13,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import BlockConfig from '../../../../../common/studio-block-config';
 import { STUDIO_NAVTO_DETAIL } from '../../../../../store/actionType';
+import AlertBox from '../../../../../components/alertBox';
+import contentListZH from '../../../../../common/content-list';
 
 class Detail extends React.Component{
 
@@ -20,8 +22,12 @@ class Detail extends React.Component{
         super(props);
         this.state = {
             rowNumber: 0,
-            readmore: false
+            readmore: false,
+            isOpen: {
+                display: 'none'
+            }
         };
+
     }
 
     renderRowCard(){
@@ -86,6 +92,14 @@ class Detail extends React.Component{
         });
     }
 
+    clickClose(){
+        this.setState({
+            isOpen: {
+                display: 'none'
+            }
+        });
+    }
+
     render(){
         const cards = this.renderRowCard();
         return (<div className='studioDetailWrap'>
@@ -114,11 +128,24 @@ class Detail extends React.Component{
                     null
                 }
             </div>
+            <AlertBox 
+                isOpen={this.state.isOpen} 
+                text={this.state.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>
         </div>);
     }
 
     componentDidMount(){
-        this.props.changePageTitle(this.props);
+        if(!(this.props.username && this.props.userid)){
+            this.props.history.push('/login');
+        }else{
+            this.props.changePageTitle(this.props);
+        }        
         const id = this.props.location.search.split('=')[1];
         const queryUrl = BlockConfig.detailConfig[id].queryUrl;
         let myOption = {
@@ -136,10 +163,22 @@ class Detail extends React.Component{
             });
         })
         .catch((mesg) => {
-            alert(mesg);
+            this.setState({
+                isOpen: {
+                    display: 'flex'
+                },
+                mesg: contentListZH.REQUEST_EXCEPTION 
+            });
         });
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        username: state.username,
+        userid: state.userid
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -158,4 +197,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(Detail));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Detail));

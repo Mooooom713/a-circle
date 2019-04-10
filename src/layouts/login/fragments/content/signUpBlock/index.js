@@ -3,6 +3,7 @@ import './style.css';
 import contentListZH from '../../../../../common/content-list';
 import { includes } from 'lodash';
 import fetchUrl from '../../../../../common/collection-fetch-url';
+import AlertBox from '../../../../../components/alertBox';
 
 class SignUpBlock extends React.Component {
 
@@ -15,7 +16,10 @@ class SignUpBlock extends React.Component {
             comfirmPassword: '',
             userNameError: '',
             passwordError: '',
-            comfirmError: ''
+            comfirmError: '',
+            isOpen: {
+                display: 'none'
+            }
         };
     }
 
@@ -57,12 +61,15 @@ class SignUpBlock extends React.Component {
         });
     }
 
-    comfirmPassword(e){
-        let value = e.target.value;
+    comfirmPassword(){
 
-        if(value !== this.state.password){
+        if(this.state.comfirmPassword !== this.state.password){
             this.setState({
                 comfirmError: 'inputerror'
+            });
+        }else{
+            this.setState({
+                comfirmError: ''
             });
         }
     }
@@ -78,15 +85,36 @@ class SignUpBlock extends React.Component {
             fetch(fetchUrl.register(this.state.username, this.state.password, this.state.comfirmPassword), myOption)
             .then(res => res.json())
             .then(json => {
-                const username = json.NickUserName;
-                const userid = json.UserId;
+                const mesg1 = contentListZH.LOGIN_SIGNUP_SUCCESS_01;
+                const mesg2 = contentListZH.LOGIN_SIGNUP_SUCCESS_02;
+
+                this.setState({
+                    isOpen: {
+                        display: 'flex'
+                    },
+                    mesg: `${mesg1}${this.state.username}${mesg2}`
+                });
             })
             .catch(mesg => {
-                alert(mesg);
+                this.setState({
+                    isOpen: {
+                        display: 'flex'
+                    },
+                    mesg: contentListZH.LOGIN_SIGNIN_USERNAME_PASSWORD_NOT_MATCH
+                });
             });
 
         }
     }
+
+    clickClose(){
+        this.setState({
+            isOpen: {
+                display: 'none'
+            }
+        });
+    }
+
 
     render(){
         return (<div className='signupblockWrap'>
@@ -123,8 +151,8 @@ class SignUpBlock extends React.Component {
                     value={this.state.password}
                     placeholder={contentListZH.LOGIN_SIGNIN_PASSWORD_PLACEHOLDER}/>
                 <input
-                    onBlur={(e) => {
-                        this.comfirmPassword(e);
+                    onBlur={() => {
+                        this.comfirmPassword();
                     }}
                     onChange={(e) => {
                         this.saveComfirmData(e);
@@ -136,7 +164,16 @@ class SignUpBlock extends React.Component {
                 <button onClick={() => {
                     this.submit();
                 }}></button>
-            </div>     
+            </div>
+            <AlertBox 
+                isOpen={this.state.isOpen} 
+                text={this.state.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>   
         </div>);
     }
 }
