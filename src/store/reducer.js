@@ -28,7 +28,12 @@ const defaultSate = {
         index: 0,
         pageTitle: [
             require('../img/font/clubTitle.png')
-        ]
+        ],
+        mesg: '',
+        isOpen: {
+            display: 'none'
+        },
+        isClose: true
     }
 };
 
@@ -101,6 +106,15 @@ export default (state = defaultSate, action) => {
     if(action.type === ActionTypes.GAOKAO_SAVE_DATA){
         let newState = assign({}, state);
         newState.gaokaoConfig.data = action.data;
+        return newState;
+    }
+
+    //Club
+    if(action.type === ActionTypes.CLUB_CHANGE_ALERTDATA){
+        let newState = assign({}, state);
+        newState.clubConfig.mesg = action.mesg;
+        newState.clubConfig.isOpen = action.isOpen;
+        newState.clubConfig.isClose = action.isClose;
         return newState;
     }
 

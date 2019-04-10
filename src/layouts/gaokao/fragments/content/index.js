@@ -8,6 +8,8 @@ import ReadMore from '../../../../components/readMore';
 import ArticleDetail from './detail';
 import { GAOKAO_SAVE_DATA } from '../../../../store/actionType';
 import { connect } from 'react-redux';
+import AlertBox from '../../../../components/alertBox';
+import contentListZH from '../../../../common/content-list';
 
 class Content extends React.Component{
 
@@ -15,7 +17,10 @@ class Content extends React.Component{
         super(props);
         this.state = {
             readmore: false,
-            isScroll: false
+            isScroll: false,
+            isOpen: {
+                display: 'none'
+            }
         };
     }
 
@@ -55,6 +60,14 @@ class Content extends React.Component{
         });
     }
 
+    clickClose(){
+        this.setState({
+            isOpen: {
+                display: 'none'
+            }
+        });
+    }
+
     /**
      * 渲染详情主页
      */
@@ -86,6 +99,15 @@ class Content extends React.Component{
                     null
                 }
             </div>
+            <AlertBox 
+                isOpen={this.state.isOpen} 
+                text={this.state.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>
         </div>);
     }
 
@@ -134,7 +156,12 @@ class Content extends React.Component{
             });
         })
         .catch((mesg) => {
-            alert(mesg);
+            this.setState({
+                isOpen: {
+                    display: 'flex'
+                },
+                mesg: contentListZH.REQUEST_EXCEPTION 
+            });
         });
     }
 }

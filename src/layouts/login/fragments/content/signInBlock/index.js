@@ -6,6 +6,7 @@ import fetchUrl from '../../../../../common/collection-fetch-url';
 import { connect } from 'react-redux';
 import { SIGNIN_LOGIN_STATUS_CHANGE } from '../../../../../store/actionType';
 import { withRouter } from 'react-router-dom';
+import AlertBox from '../../../../../components/alertBox';
  
 class SignInBlock extends React.Component{
 
@@ -17,7 +18,10 @@ class SignInBlock extends React.Component{
             password: '',
             userNameError: '',
             passwordError: '',
-            checked: false
+            checked: false,
+            isOpen: {
+                display: 'none'
+            }
         };
     }
 
@@ -60,9 +64,10 @@ class SignInBlock extends React.Component{
 
     submit(){
         const validate = !this.state.userNameError && !this.state.passwordError ? true : false;
+        const hasValue = this.state.username && this.state.password ? true : false;
         const rememberme = this.state.checked;
 
-        if(validate){
+        if(validate && hasValue){
             let myOption = {
                 method: 'GET'
             };
@@ -72,6 +77,7 @@ class SignInBlock extends React.Component{
                 if(rememberme){
                     localStorage.aCircleUsername = json.NickUserName;
                     localStorage.aCircleUserid = json.UserId;
+                    this.props.saveLoginStatusLong();
                 }else{
                     sessionStorage.aCircleUsername = json.NickUserName;
                     sessionStorage.aCircleUserid = json.UserId;
@@ -80,7 +86,12 @@ class SignInBlock extends React.Component{
                 this.props.history.goBack();
             })
             .catch(mesg => {
-                alert(mesg);
+                this.setState({
+                    isOpen: {
+                        display: 'flex'
+                    },
+                    mesg: contentListZH.LOGIN_SIGNIN_USERNAME_PASSWORD_NOT_MATCH
+                });
             });
 
             this.setState({
@@ -88,6 +99,14 @@ class SignInBlock extends React.Component{
                 password: ''
             });
         }
+    }
+
+    clickClose(){
+        this.setState({
+            isOpen: {
+                display: 'none'
+            }
+        });
     }
 
     render(){
@@ -134,6 +153,15 @@ class SignInBlock extends React.Component{
             <button onClick={() => {
                 this.submit();
             }}></button>
+            <AlertBox 
+                isOpen={this.state.isOpen} 
+                text={this.state.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>
         </div>);
     }
 }
@@ -145,6 +173,14 @@ const mapDispatchToProps = (dispatch) => {
                 type: SIGNIN_LOGIN_STATUS_CHANGE,
                 username: sessionStorage.aCircleUsername,
                 userid: sessionStorage.aCircleUserid
+            };
+            dispatch(action);
+        },
+        saveLoginStatusLong(){
+            const action = {
+                type: SIGNIN_LOGIN_STATUS_CHANGE,
+                username: localStorage.aCircleUsername,
+                userid: localStorage.aCircleUserid
             };
             dispatch(action);
         }

@@ -9,6 +9,8 @@ import { map } from 'lodash';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FAMOUS_NAVTO_DETAIL, FAMOUS_SAVE_DATA } from '../../../../../store/actionType';
+import AlertBox from '../../../../../components/alertBox';
+import contentListZH from '../../../../../common/content-list';
 
 class Detail extends React.Component{
 
@@ -20,8 +22,12 @@ class Detail extends React.Component{
         this.state = {
             linkUrl: url,
             readmore: false,
-            isScroll: false
+            isScroll: false,
+            isOpen: {
+                display: 'none'
+            }
         };
+
     }
 
     /**
@@ -73,6 +79,14 @@ class Detail extends React.Component{
         });
     }
 
+    clickClose(){
+        this.setState({
+            isOpen: {
+                display: 'none'
+            }
+        });
+    }
+
     
     /**
      * 渲染详情主页
@@ -105,6 +119,15 @@ class Detail extends React.Component{
                     null
                 }
             </div>
+            <AlertBox 
+                isOpen={this.state.isOpen} 
+                text={this.state.mesg}
+                clickClose={() => {
+                    this.clickClose();
+                }}
+                clickOK={() => {
+                    this.clickClose();
+                }}/>
         </div>);
     }
 
@@ -150,7 +173,11 @@ class Detail extends React.Component{
     componentDidMount(){      
         const id = this.props.location.search.split('=')[1];
         if(!id) return;
-        this.props.changePageTitle(this.props);
+        if(!(this.props.username && this.props.userid)){
+            this.props.history.push('/login');
+        }else{
+            this.props.changePageTitle(this.props);
+        }
         const queryOption = BlockConfig.detailConfig[id].queryOption;
         let myOption = {
             method: 'GET',
@@ -174,14 +201,21 @@ class Detail extends React.Component{
             }
         })
         .catch((mes) => {
-            alert(mes);
+            this.setState({
+                isOpen: {
+                    display: 'flex'
+                },
+                mesg: contentListZH.REQUEST_EXCEPTION 
+            });
         });
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        data: state.famousConfig.data
+        data: state.famousConfig.data,
+        username: state.username,
+        userid: state.userid
     };
 };
 
