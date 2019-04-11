@@ -7,14 +7,16 @@ import { withRouter } from 'react-router-dom';
 
 const Club = (props) => {
     const userImg = props.username && props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
+    const navto = props.username && props.userid ? '/user' : 'login';
     return (<div className='clubWrap'>
             <CommonHeader
                 backImg={require('../../img/icon/back.png')}
                 userImg={userImg}
                 pageTitle={props.pageTitle}
                 username={props.username}
+                navto={navto}
                 goBack={()=>{
-                    props.goBack(props);
+                    props.history.goBack();
                 }}/>
             <Content/>
         </div>);
@@ -28,12 +30,5 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        goBack(props){
-            props.history.goBack();
-        }
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Club));
+export default connect(mapStateToProps, null)(withRouter(Club));

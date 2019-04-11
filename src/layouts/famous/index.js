@@ -18,12 +18,14 @@ class Famous extends React.Component{
 
 	render(){
 		const userImg = this.props.username && this.props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
+		const navto = this.props.username && this.props.userid ? '/user' : 'login';
 		return (<div className='FamousWrap'>
 		<CommonHeader
 			backImg={require('../../img/icon/back.png')}
 			userImg={userImg}
 			username={this.props.username}
 			pageTitle={this.props.pageTitle}
+			navto={navto}
 			goBack={()=>{
 				this.props.goBack(this.props);
 			}}/>

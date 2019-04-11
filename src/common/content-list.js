@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 10:59:54 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-09 17:22:18
+ * @Last Modified time: 2019-04-11 14:25:06
  */
 
 let contentListZH = {
@@ -51,7 +51,18 @@ let contentListZH = {
 
 
     //Common
-    REQUEST_EXCEPTION: '请求异常'
+    REQUEST_EXCEPTION: '请求异常',
+
+
+    //User
+    USER_LIST_USERINFO: '用户信息',
+    USER_LIST_USERCOMMENT_HISTORY: '用户评论记录',
+    USER_LIST_LOGOUT: '退出登录',
+    USER_INIT_NOTE: '欢迎来到用户中心',
+    USER_NAME_LABEL: '用户名：',
+    USER_ID_LABEL: '用户ID：',
+    USER_COMMENT_NODATA: '还没有留过言哦~  快去留言吧！',
+    USER_COMFIRM_LOGOUT: '确定要退出登录吗？'
 
 };
 

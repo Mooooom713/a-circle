@@ -1,0 +1,21 @@
+.userHeaderWrap{
+    background: rgba(00, 00, 00, 0.6);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    justify-content: flex-start;
+}
+
+.userHeaderWrap img{
+    height: 25px;
+}
+
+.userHeaderWrap span:nth-child(1){
+    flex: 3.6;
+}
+
+.userHeaderWrap span:nth-child(2){
+    flex: 5;
+}
