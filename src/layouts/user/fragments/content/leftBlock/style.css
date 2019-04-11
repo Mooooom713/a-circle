@@ -1,0 +1,51 @@
+.userLeftBlockWrap{
+    width: 40%;
+    height: 70%;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userLeftBlockWrap p{
+    width: 100%;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+}
+
+.userLeftBlockWrap p span{
+    width: 80%;
+    color: #F4A300;
+    font-size: 1.8rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+}
+
+.userLeftBlockWrap ul{
+    flex: 4;
+    list-style: none;
+}
+
+.userLeftBlockWrap ul a{
+    text-decoration: none;
+}
+
+.userLeftBlockWrap ul li{
+    color: rgb(212, 213, 214);
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: color 1s;
+}
+
+.userLeftBlockWrap ul li:hover{
+    color: #F4A300;
+}
+
+.userLeftBlockWrap ul .active{
+    color: #F4A300;
+}

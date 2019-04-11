@@ -1,0 +1,20 @@
+.userRightBlock{
+    width: 80%;
+    height: 70%;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userRightBlock .initText{
+    color: aliceblue;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+}
+
+.userRightBlock .welcomeImg{
+    width: 1.4rem;
+    height: 1.4rem;
+    vertical-align: middle;
+}

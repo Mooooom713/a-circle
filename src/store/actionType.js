@@ -20,3 +20,9 @@ export const CLUB_CHANGE_ALERTDATA = 'club_change_alertdata';
 
 //SignIn
 export const SIGNIN_LOGIN_STATUS_CHANGE = 'signin_login_status_change';
+
+
+//User
+export const USER_CHANGE_RIGHTBLOCK = 'user_change_rightblock';
+export const USER_NAV_BACK = 'user_nav_back';
+export const USER_CLEAR_LOCAL_STORAGE = 'user_clear_local_storage';

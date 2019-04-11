@@ -7,12 +7,14 @@ import { STUDIO_GO_BACK } from '../../store/actionType';
 
 const Studio = (props) => {
 	const userImg = props.username && props.userid ? require('../../img/icon/usericon.png') : require('../../img/signin.png');
+	const navto = props.username && props.userid ? '/user' : 'login';
 	return (<div className='StudioWrap'>
 		<CommonHeader
 			backImg={require('../../img/icon/back.png')}
 			userImg={userImg}
 			username={props.username}
 			pageTitle={props.pageTitle}
+			navto={navto}
 			goBack={()=>{
 				props.goBack(props);
 			}}/>

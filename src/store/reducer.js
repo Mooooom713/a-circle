@@ -34,6 +34,9 @@ const defaultSate = {
             display: 'none'
         },
         isClose: true
+    },
+    userConfig: {
+        clickIndex: -1
     }
 };
 
@@ -120,6 +123,26 @@ export default (state = defaultSate, action) => {
 
     //Sign in
     if(action.type === ActionTypes.SIGNIN_LOGIN_STATUS_CHANGE){
+        let newState = assign({}, state);
+        newState.username = action.username;
+        newState.userid = action.userid;
+        return newState;
+    }
+
+    //User
+    if(action.type === ActionTypes.USER_CHANGE_RIGHTBLOCK){
+        let newState = assign({}, state);
+        newState.userConfig.clickIndex = action.clickIndex;
+        return newState;
+    }
+
+    if(action.type === ActionTypes.USER_NAV_BACK){
+        let newState = assign({}, state);
+        newState.userConfig.clickIndex = action.clickIndex;
+        return newState;
+    }
+
+    if(action.type === ActionTypes.USER_CLEAR_LOCAL_STORAGE){
         let newState = assign({}, state);
         newState.username = action.username;
         newState.userid = action.userid;

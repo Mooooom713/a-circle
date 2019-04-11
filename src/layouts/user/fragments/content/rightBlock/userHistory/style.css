@@ -1,0 +1,93 @@
+.userhistoryWrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userhistoryWrap .commentsWrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.userhistoryWrap > p{
+    color: antiquewhite;
+    font-size: 1.4rem;
+    letter-spacing: 0.2rem;
+}
+
+.userhistoryWrap .commentWrap{
+    margin-top: 2rem;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.userhistoryWrap .commentWrap > p{
+    flex: 1;
+    color: aliceblue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.userhistoryWrap .commentsWrap > div:nth-child(1){
+    flex: 1;
+    text-align: center;
+}
+
+
+.userhistoryWrap .commentsWrap > div:nth-child(1) button{
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: none;
+    font-size: 4rem;
+    color: rgb(192, 192, 192);
+    transition: color 1s;
+    cursor: pointer;
+}
+
+.userhistoryWrap .commentsWrap > div:nth-child(1) button:hover{
+    color: #F4A300;
+}
+
+.userhistoryWrap .commentsWrap > div:nth-child(2){
+    margin-top: 2rem;
+    flex: 4;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+}
+
+.userhistoryWrap .commentsWrap > div:nth-child(2) p{
+    flex:1;
+    color: aliceblue;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+.userhistoryWrap .commentsWrap > div:nth-child(3){
+    flex: 1;
+    text-align: center;
+}
+
+
+.userhistoryWrap .commentsWrap > div:nth-child(3) button{
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    outline: none;
+    font-size: 4rem;
+    color: rgb(192, 192, 192);
+    transition: color 1s;
+    cursor: pointer;
+}
+
+.userhistoryWrap .commentsWrap > div:nth-child(3) button:hover{
+    color: #F4A300;
+}

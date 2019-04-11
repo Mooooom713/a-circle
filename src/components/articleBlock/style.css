@@ -34,7 +34,7 @@
 .articleWrap div h3{
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .articleWrap .timeStyle{

@@ -10,6 +10,10 @@ const fetchUrl = {
     },
     register: (username, password, comfirmPassword) => {
         return `http://newsapi.gugujiankong.com/Handler.ashx?action=register&username=undefine&password=undefine&r_userName=${username}&r_password=${password}&r_confirmPassword=${comfirmPassword}`;
+    },
+    //user
+    getcomments: (userid) => {
+        return `http://newsapi.gugujiankong.com/Handler.ashx?action=getusercomments&userid=${userid}`;
     }
 };
 
