@@ -1,6 +1,18 @@
 const fetchUrl = {
+    //famous
+    getFamousArticle: (count, page) => {
+        return `http://gank.io/api/xiandu/data/id/appinn/count/${count}/page/${page}`;
+    },
+
+    //gaokao
+    getGaokaoArticle: () => {
+        return 'http://gank.io/api/xiandu/data/id/appinn/count/3/page/5';
+    },
+
     //club
-    commentList: 'http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=123',
+    commentList: () => {
+        return 'http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=123';
+    },
     commentAdd: (userid, content) => {
         return `http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=${userid}&uniquekey=123&commnet=${content}`;
     },

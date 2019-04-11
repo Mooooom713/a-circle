@@ -94,7 +94,8 @@ const mapDispatchToProps = (dispatch) => {
             const action ={
                 type: USER_CLEAR_LOCAL_STORAGE,
                 username: '',
-                userid: ''
+                userid: '',
+                clickIndex: -1
             };
             dispatch(action);
         }

@@ -146,6 +146,7 @@ export default (state = defaultSate, action) => {
         let newState = assign({}, state);
         newState.username = action.username;
         newState.userid = action.userid;
+        newState.userConfig.clickIndex = action.clickIndex;
         return newState;
     }
 

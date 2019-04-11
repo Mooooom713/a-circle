@@ -10,6 +10,8 @@ import { GAOKAO_SAVE_DATA } from '../../../../store/actionType';
 import { connect } from 'react-redux';
 import AlertBox from '../../../../components/alertBox';
 import contentListZH from '../../../../common/content-list';
+import ArticlePlaceHolder from '../../../../components/articlePlaceholder';
+import fetchUrl from '../../../../common/collection-fetch-url';
 
 class Content extends React.Component{
 
@@ -133,9 +135,19 @@ class Content extends React.Component{
         return false;
     }
 
+    renderPlaceHolder(){
+        return <ArticlePlaceHolder/>;
+    }
+
     render(){
         return (<Switch>
-            <Route path='/gaokao' exact component={() => this.renderContent()}/>
+            <Route path='/gaokao' exact component={() => {
+                if(this.state.data){
+                    return this.renderContent();
+                }else{
+                    return this.renderPlaceHolder();
+                }
+            }}/>
             <Route path='/gaokao/:id' exact component={() => this.renderDetail()}/>
         </Switch>);
     }
@@ -145,7 +157,7 @@ class Content extends React.Component{
             method: 'GET',
             mode: 'cors'
         };
-        fetch('http://gank.io/api/xiandu/data/id/appinn/count/3/page/5', myOption)
+        fetch(fetchUrl.getGaokaoArticle(), myOption)
         .then(res => res.json())
         .then((json) => {
             let data = json.results;
