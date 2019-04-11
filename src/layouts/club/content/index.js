@@ -9,6 +9,7 @@ import AlertBox from '../../../components/alertBox';
 import contentListZH from '../../../common/content-list';
 import { connect } from 'react-redux';
 import { CLUB_CHANGE_ALERTDATA } from '../../../store/actionType';
+import CommentPlaceHolder from '../../../components/commentPlaceholder';
 
 class Content extends React.Component{
 
@@ -41,6 +42,10 @@ class Content extends React.Component{
         });
     }
 
+    renderPlaceholer(){
+        return <CommentPlaceHolder/>;
+    }
+
     
     clickClose(){
         let isOpen = {
@@ -53,7 +58,7 @@ class Content extends React.Component{
 
 
     render(){
-        const commentContent = this.state.data.length > 0 ? this.renderComment() : null;
+        const commentContent = this.state.data.length > 0 ? this.renderComment() : this.renderPlaceholer();
         return (<div className='clubDerailWrap'>
             <div className='clubContentWrap'>
                 <InputArea/>  
@@ -97,7 +102,7 @@ class Content extends React.Component{
         let myOption = {
             method: 'GET'
         };
-        fetch(fetchUrl.commentList, myOption)
+        fetch(fetchUrl.commentList(), myOption)
         .then(res => res.json())
         .then(json => {
             json = json.reverse();

@@ -74,10 +74,17 @@ class SignUpBlock extends React.Component {
         }
     }
 
-    submit(){
+    submit(e){
+        if(e){
+            if(e.charCode !== 13){
+                return;
+            }
+        }
         const validate = !this.state.userNameError && !this.state.passwordError && !this.state.comfirmError ? true : false;
+        const hasValue = this.state.username && this.state.password && this.state.comfirmPassword ? true : false;
+        const doubleCheck = this.state.password === this.state.comfirmPassword ? true : false;
 
-        if(validate){
+        if(validate && hasValue && doubleCheck){
             let myOption = {
                 method: 'GET'
             };
@@ -111,13 +118,20 @@ class SignUpBlock extends React.Component {
         this.setState({
             isOpen: {
                 display: 'none'
-            }
+            },
+            username: '',
+            password: '',
+            comfirmPassword: ''
         });
     }
 
 
     render(){
-        return (<div className='signupblockWrap'>
+        return (<div 
+            className='signupblockWrap'
+            onKeyPress={(e) => {
+                this.submit(e);
+            }}>
             <span 
                 className='userNameError'
                 style={this.state.userNameError ? {visibility: 'visible'} : {visibility: 'hidden'}}>

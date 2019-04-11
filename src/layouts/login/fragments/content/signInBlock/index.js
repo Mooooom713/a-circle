@@ -62,7 +62,12 @@ class SignInBlock extends React.Component{
         });
     }
 
-    submit(){
+    submit(e){
+        if(e){
+            if(e.charCode !== 13){
+                return;
+            }
+        }
         const validate = !this.state.userNameError && !this.state.passwordError ? true : false;
         const hasValue = this.state.username && this.state.password ? true : false;
         const rememberme = this.state.checked;
@@ -110,7 +115,11 @@ class SignInBlock extends React.Component{
     }
 
     render(){
-        return(<div className='signinblockWrap'>
+        return(<div 
+            className='signinblockWrap'
+            onKeyPress={(e) => {
+                this.submit(e);
+            }}>
             <span 
                 className='userNameError'
                 style={this.state.userNameError ? {visibility: 'visible'} : {visibility: 'hidden'}}>
@@ -150,9 +159,11 @@ class SignInBlock extends React.Component{
                 <label htmlFor='remember'></label>
                 <span>{contentListZH.LOGIN_SIGNIN_REMEMBER}</span>
             </div>
-            <button onClick={() => {
-                this.submit();
-            }}></button>
+            <button 
+                onClick={() => {
+                    this.submit();
+                }}>
+            </button>
             <AlertBox 
                 isOpen={this.state.isOpen} 
                 text={this.state.mesg}

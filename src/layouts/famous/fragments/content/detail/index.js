@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 import { FAMOUS_NAVTO_DETAIL, FAMOUS_SAVE_DATA } from '../../../../../store/actionType';
 import AlertBox from '../../../../../components/alertBox';
 import contentListZH from '../../../../../common/content-list';
+import ArticlePlaceHolder from '../../../../../components/articlePlaceholder';
+import fetchUrl from '../../../../../common/collection-fetch-url';
 
 class Detail extends React.Component{
 
@@ -139,6 +141,10 @@ class Detail extends React.Component{
         return <ArticleDetail data={this.props.data}/>;
     }
 
+    renderPlaceHolder(){
+        return <ArticlePlaceHolder/>;
+    }
+
     /**
      * 通过钩子函数优化性能
      * @param {Object} nextProps 
@@ -160,7 +166,13 @@ class Detail extends React.Component{
             <Route
                 path={this.state.linkUrl}
                 exact
-                component={() => this.renderDetailContent()}/>
+                component={() => {
+                    if(this.state.data){
+                        return this.renderDetailContent();
+                    }else{
+                        return this.renderPlaceHolder();
+                    }
+                }}/>
             <Route 
                 path={`${this.state.linkUrl}/:number`} 
                 component={() => this.renderArticleDetail()}/>
@@ -186,7 +198,7 @@ class Detail extends React.Component{
                 Accept: "application/json"
             }
         };
-        fetch(`http://gank.io/api/xiandu/data/id/appinn/count/${queryOption.count}/page/${queryOption.page}`, myOption)
+        fetch(fetchUrl.getFamousArticle(queryOption.count, queryOption.page), myOption)
         .then(res => res.json())
         .then((res) => {
             if(res.results.length > 2){
