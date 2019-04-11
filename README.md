@@ -8,4 +8,4 @@
 
 ![首页设计图](https://github.com/Mooooom713/a-circle/blob/dev/image/home.png)
 
-## version 0.1.0
+## version 1.0.0
