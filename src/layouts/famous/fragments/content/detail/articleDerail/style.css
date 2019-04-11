@@ -1,0 +1,36 @@
+.articleContentWrap{
+    flex: 13;
+    background: rgba(116, 116, 116, 0.5);  
+    overflow-y: auto;
+}
+.articleContentWrap .articleContent{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.articleContentWrap .textArticleWrap{
+    margin: 2rem 0;
+    width: 60%;
+    height: 100%;
+    color: antiquewhite;
+}
+.articleContentWrap .textArticleWrap img{
+    width: 20%;
+    height: 5%;
+}
+
+.articleContentWrap .textArticleWrap p{
+    padding: 1rem 0;
+}
+
+.articleContentWrap .textArticleWrap ul{
+    list-style: none;
+}
+
+.articleContentWrap .textArticleWrap a{
+    color: rgb(91, 167, 253);
+    text-decoration: none;
+}

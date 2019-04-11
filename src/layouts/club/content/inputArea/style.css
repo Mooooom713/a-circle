@@ -1,0 +1,35 @@
+.inputareaWrap{
+    width: 50%;
+    height: 16rem;
+    background: rgba(255, 255, 255, .8);
+    text-align: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: 2rem;
+}
+.inputareaWrap .textareaStyle{
+    margin-top: 1.6rem;
+    width: 90%;
+    height: 7rem;
+    resize: none;
+    border: 0px;
+    padding: 1rem;
+}
+.inputareaWrap .textareaStyle:focus{
+    outline: none;
+}
+.inputareaWrap .inputareaBtn{
+    display: block;
+    position: relative;
+    width: 4rem;
+    height: 1.8rem;
+    border: none;
+    outline: none;
+    background: #ffffff;
+    left: 42.6rem;
+    top: 2rem;
+    cursor: pointer;
+}
+.inputareaWrap .inputareaBtn:hover{
+    outline: #c8c8c8 solid 1px;
+}

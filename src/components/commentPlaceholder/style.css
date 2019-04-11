@@ -1,0 +1,75 @@
+.commentPlaceHolderWrap{
+    width: 50%;
+    height: 192px;
+    background: rgba(0, 0, 0, 0.4);
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.commentPlaceHolderWrap > div:nth-child(1){
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.commentPlaceHolderWrap > div:nth-child(1) > span{
+    margin-left: 15%;
+}
+
+.commentPlaceHolderWrap > div:nth-child(1) > span:nth-child(1){
+    width: 70%;
+    height: 60%;
+    background: #7c7c7c;
+    animation: shine 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.commentPlaceHolderWrap > div:nth-child(1) > span:nth-child(2){
+    margin-top: 5%;
+    width: 50%;
+    height: 10%;
+    background: #7c7c7c;
+    animation: shine 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.commentPlaceHolderWrap > div:nth-child(1) > span:nth-child(3){
+    margin-top: 5%;
+    width: 50%;
+    height: 10%;
+    background: #7c7c7c;
+    animation: shine 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.commentPlaceHolderWrap > div:nth-child(2){
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.commentPlaceHolderWrap > div:nth-child(2) > p{
+    width: 90%;
+    height: 90%;
+    background: #7c7c7c;
+    animation: shine 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+}
+
+
+@keyframes shine
+{
+    0%   {background: #7c7c7c;}
+    25%  {background: #8a8a8a;}
+    50%  {background: #9e9e9e;}
+    75%  {background: #c0c0c0;}
+    100% {background: #c9c9c9;}
+}

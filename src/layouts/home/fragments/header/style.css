@@ -1,9 +1,25 @@
 .headWrap{
-    background: rgba(00, 00, 00, 0.5);
+    background: rgba(00, 00, 00, 0.6);
     flex: 1;
     display: flex;
     align-items: center;
     padding-left: 5%;
     padding-right: 5%;
     justify-content: space-between
+}
+
+.headWrap img{
+    cursor: pointer;
+}
+
+.headWrap a{
+    text-decoration: none;
+}
+
+.headWrap a img{
+    vertical-align: middle;
+}
+
+.headWrap a span{
+    color: #F4A300;
 }

@@ -1,0 +1,26 @@
+.messageAreaWrap{
+    width: 50%;
+    height: 192px;
+    background: rgba(255, 255, 255, .8);
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.messageAreaWrap div > img{
+    margin-left: 1.7rem;
+    margin-top: 1.4rem;
+    width: 6rem;
+    height: 6rem;
+}
+.messageAreaWrap div > p{
+    margin-left: 1.7rem;
+    margin-top: 0.4rem;
+    color: #787878;
+    font-size: 0.8rem;
+}
+.messageAreaWrap .textWrap{
+    margin-top: 1.4rem;
+    margin-left: 1.7rem;
+}

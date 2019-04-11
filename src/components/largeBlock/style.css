@@ -6,6 +6,19 @@
     justify-content: center;
 }
 
+.imgWrap.studio:hover{
+    background: rgba(250, 202, 192, 0.7);
+}
+.imgWrap.famous:hover{
+    background: rgba(243, 201, 221, 0.7);
+}
+.imgWrap.gaokao:hover{
+    background: rgba(191, 181, 215, 0.7);
+}
+.imgWrap.club:hover{
+    background: rgba(190, 161, 165, 0.7);
+}
+
 /* left top */
 
 .blockLargeLeftTop {

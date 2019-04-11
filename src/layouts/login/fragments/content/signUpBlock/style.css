@@ -1,0 +1,107 @@
+.signupblockWrap{
+    width: 60%;    
+    height: 60%;
+    position: relative;
+}
+
+.signupblockWrap .inputWrap{
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signupblockWrap .userNameError{
+    position: absolute;
+    top: -1.8rem;
+    font-size: 0.8rem;
+    width: 97%;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding-left: 3%;
+    color: #e7281f;
+}
+
+.signupblockWrap .passwordError{
+    position: absolute;
+    top: 3rem;
+    font-size: 0.8rem;
+    width: 97%;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding-left: 3%;
+    color: #e7281f;
+}
+
+.signupblockWrap .comfirmError{
+    position: absolute;
+    top: 7.7rem;
+    font-size: 0.8rem;
+    width: 97%;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding-left: 3%;
+    color: #e7281f;
+}
+
+.signupblockWrap .inputWrap input{
+    width: 89%;
+    height: 2.6rem;
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.signupblockWrap .inputWrap input:hover{
+    border: 1px solid #fedb16;
+}
+
+.signupblockWrap .inputWrap input:focus{
+    border: 1px solid #fedb16;
+    box-shadow: 0 0 0 3px rgba(254,219,22,0.3);
+}
+
+.signupblockWrap .inputWrap input:nth-child(1){
+    background: #fff url(../../../../../img/icon/user.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+}
+
+.signupblockWrap .inputWrap input:nth-child(2){
+    background: #fff url(../../../../../img/icon/pass.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+    margin-top: 2rem;
+}
+
+.signupblockWrap .inputWrap input:nth-child(3){
+    background: #fff url(../../../../../img/icon/pass.png) no-repeat;
+    background-size: 6% 50%;
+    background-position: 3% center;
+    padding-left: 10%;
+    margin-top: 2rem;
+}
+
+.signupblockWrap .inputWrap button{
+    margin-top: 8%;
+    width: 100%;
+    height: 2.6rem;
+    background: #fff url(../../../../../img/font/register.png) no-repeat;
+    background-position: center center;
+    border: none;
+    outline: none;
+    background-size: 14% 40%;
+    cursor: pointer;
+    padding: 0 1.3rem;
+}
+
+.signupblockWrap .inputWrap .inputerror{
+    border: 1px solid #e7281f !important;
+}
+
+.signupblockWrap .inputWrap .inputerror:focus{
+    border: 1px solid #e7281f !important;
+    box-shadow: 0 0 0 3px rgba(243,71,63,0.3)!important;
+}

@@ -1,0 +1,44 @@
+.articleWrap{
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    width: 58%;
+    height: 12rem;
+    flex-direction: row;  
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.articleWrap img{
+    flex: 1;
+    margin: 1.5rem;
+}
+
+.articleWrap div{
+    flex: 4;
+    margin-top: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.articleWrap a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.articleWrap a:hover{
+    color: #3891ec;
+}
+
+.articleWrap div h3{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.articleWrap .timeStyle{
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+}

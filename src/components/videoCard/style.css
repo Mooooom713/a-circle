@@ -1,0 +1,23 @@
+.videoWrap{
+    display: inline-block;
+    width: 19%;
+    height: 240px;
+    background: #e5e5e5;
+}
+
+.videoWrap video{
+    margin-top: 1%;
+    display: inline-block;
+    width: 99%;
+    height: 200px;
+    object-fit: fill;
+}
+
+.videoWrap p{
+    padding-top: 0.4rem;
+    padding-left: 0.4rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0.8rem;
+}
