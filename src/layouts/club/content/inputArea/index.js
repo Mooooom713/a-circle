@@ -29,7 +29,7 @@ class InputArea extends React.Component{
                     display: 'flex'
                 };
                 
-                this.props.handleChangeMesg(mesg, isOpen);
+                this.props.handleChangeMesg(mesg, isOpen, false);
             })
             .catch(mesg => {
                 let error = contentListZH.CLUB_PUBLISH_FAILED;
@@ -65,16 +65,18 @@ class InputArea extends React.Component{
                 className='textareaStyle' 
                 placeholder={contentListZH.CLUB_PLACEHOLDER}
                 maxLength='200'/>
-            <button
-                className='inputareaBtn'
-                onClick={() => {
-                    this.addComment();
-                    this.setState({
-                        areaValue: ''
-                    });
-                }}>
-                {contentListZH.CLUB_BUTTON_TEXT}
-            </button>
+            <div>
+                <button
+                    className='inputareaBtn'
+                    onClick={() => {
+                        this.addComment();
+                        this.setState({
+                            areaValue: ''
+                        });
+                    }}>
+                    {contentListZH.CLUB_BUTTON_TEXT}
+                </button>
+            </div>
         </div>);
     }
 

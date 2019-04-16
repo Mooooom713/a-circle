@@ -12,6 +12,32 @@
     cursor: pointer;
 }
 
+.headWrap > .logoWrap{
+    width: 20%;
+    height: 50%;
+    margin-top: 0.5%;
+    background-image: url(../../../../img/logo.png); 
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+}
+
+.headWrap > .logoWrap:hover{
+    background-image: url(../../../../img/logohover.png); 
+}
+
+.headWrap > .signinWrap{
+    width: 7%;
+    height: 64%;
+    margin-top: 0.5%;
+    background-image: url(../../../../img/signin.png); 
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+}
+
+.headWrap > .signinWrap:hover{
+    background-image: url(../../../../img/signinhover.png);
+}
+
 .headWrap a{
     text-decoration: none;
 }

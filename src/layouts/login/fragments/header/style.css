@@ -5,3 +5,15 @@
     align-items: center;
     padding-left: 5%;
 }
+
+.loginHeaderWrap > a{
+    width: 18%;
+    height: 50%;
+    background-image: url(../../../../img/logo.png); 
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+}
+
+.loginHeaderWrap > a:hover{
+    background-image: url(../../../../img/logohover.png);
+}

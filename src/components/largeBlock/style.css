@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 1s;
 }
 
 .imgWrap.studio:hover{
@@ -50,7 +51,7 @@
     width: 350px;
     height: 250px;
     border: 2px solid #fff;
-    background: url(../../img/famous.png);
+    background-image: url(../../img/famous.png);
     background-size: 100% 100%;
     -webkit-transition: width 1s, height 1s, -webkit-transform 1s;
     /* For Safari 3.1 to 6.0 */
@@ -65,7 +66,7 @@
     cursor: pointer;
     width: 370px;
     height: 270px;
-    background: url(../../img/famous.png);
+    background-image: url(../../img/famous.png);
 }
 
 /* left bottom */
