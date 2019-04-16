@@ -1,0 +1,25 @@
+.messagetoastWrap{
+    position: fixed;
+    z-index: 9999;
+    width: 7%;
+    height: 5%;
+    background: #E26A1E;
+    left: 50%;
+    margin-left: -3.5%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    bottom: 5%;
+    box-shadow: 0 0 3px rgb(255, 204, 65);
+    animation: fade 3s;
+}
+
+.messagetoastWrap > p{
+    color: rgb(247, 247, 247);
+}
+
+@keyframes fade
+{
+from {opacity: 0;}
+to {opacity: 1;}
+}

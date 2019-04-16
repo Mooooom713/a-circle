@@ -98,11 +98,6 @@ class SignInBlock extends React.Component{
                     mesg: contentListZH.LOGIN_SIGNIN_USERNAME_PASSWORD_NOT_MATCH
                 });
             });
-
-            this.setState({
-                username: '',
-                password: ''
-            });
         }
     }
 

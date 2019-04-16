@@ -5,11 +5,11 @@ import MessageArea from './messageArea';
 import ReadMore from '../../../components/readMore';
 import fetchUrl from '../../../common/collection-fetch-url';
 import { map } from 'lodash';
-import AlertBox from '../../../components/alertBox';
 import contentListZH from '../../../common/content-list';
 import { connect } from 'react-redux';
 import { CLUB_CHANGE_ALERTDATA } from '../../../store/actionType';
 import CommentPlaceHolder from '../../../components/commentPlaceholder';
+import MessageToast from '../../../components/messageToast';
 
 class Content extends React.Component{
 
@@ -47,13 +47,31 @@ class Content extends React.Component{
     }
 
     
-    clickClose(){
-        let isOpen = {
-            display: 'none'
-        };
-        this.props.handleChangeMesg('', isOpen, true);
+    renderMessageToast(){
+        // let isOpen = {
+        //     display: 'none'
+        // };
+        // this.props.handleChangeMesg('', isOpen, true);
 
-        this._toFetch();
+        // this._toFetch();
+        if(!this.props.isClose){
+            return <MessageToast
+                isOpen={this.props.isOpen} 
+                text={this.props.mesg}/>;
+        }
+    }
+
+
+    componentDidUpdate(){
+        if(!this.props.isClose){
+            setTimeout(() => {
+                let isOpen = {
+                    display: 'none'
+                };
+                this.props.handleChangeMesg('', isOpen, true);
+                this._toFetch();
+            }, 2000); 
+        }
     }
 
 
@@ -86,15 +104,7 @@ class Content extends React.Component{
                     null
                 }
             </div>
-            <AlertBox 
-                isOpen={this.props.isOpen} 
-                text={this.props.mesg}
-                clickClose={() => {
-                    this.clickClose();
-                }}
-                clickOK={() => {
-                    this.clickClose();
-                }}/>
+            {!this.props.isClose ? this.renderMessageToast() : null}
         </div>);
     }
 
@@ -131,7 +141,8 @@ class Content extends React.Component{
 const mapStateToProps = (state) => {
     return {
         isOpen: state.clubConfig.isOpen,
-        mesg: state.clubConfig.mesg
+        mesg: state.clubConfig.mesg,
+        isClose: state.clubConfig.isClose
     };
 };
 

@@ -1,16 +1,11 @@
-@keyframes placeholderAnimation {
-    from {
-        background: #9c9c9c
-    }
-    to {
-        background: rgb(241, 255, 241)
-    }
+.smallBlockWrap{
+    transition: box-shadow 1s;
 }
 
-.placeholder {
-    width: 325px;
-    height: 247px;
-    background: #9c9c9c;
-    animation: placeholderAnimation 3s;
-    animation-iteration-count: infinite;
+.smallBlockWrap:hover{
+    box-shadow: 2px 2px 4px rgb(216, 216, 216);
+}
+
+.smallBlockWrap > div > img:hover{
+    box-shadow: none;
 }

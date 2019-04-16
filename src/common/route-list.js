@@ -2,7 +2,7 @@
  * @Author: Joie Qin 
  * @Date: 2019-03-25 11:00:03 
  * @Last Modified by: Joie Qin
- * @Last Modified time: 2019-04-10 17:35:25
+ * @Last Modified time: 2019-04-15 12:55:41
  */
 
 let RouteList = {
@@ -36,7 +36,6 @@ let RouteList = {
     userRoute: [
         '/user/info',
         '/user/history',
-        '/user/logout',
         '/user'
     ]
 };

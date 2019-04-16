@@ -1,5 +1,5 @@
 .userLeftBlockWrap{
-    width: 40%;
+    width: 70%;
     height: 70%;
     background: rgba(0, 0, 0, .5);
     display: flex;
@@ -44,6 +44,22 @@
 
 .userLeftBlockWrap ul li:hover{
     color: #F4A300;
+}
+
+.userLeftBlockWrap ul > li{
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.userLeftBlockWrap ul > li img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: box-shadow 1s;
+}
+
+.userLeftBlockWrap ul > li img:hover{
+    box-shadow: 0 0 5px pink;
 }
 
 .userLeftBlockWrap ul .active{
