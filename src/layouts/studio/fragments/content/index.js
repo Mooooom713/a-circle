@@ -19,8 +19,8 @@ class StudioContent extends React.Component {
     renderContentBlock(){
         let upItem = concat(BlockConfig.contentConfig[0], BlockConfig.contentConfig[1], BlockConfig.contentConfig[2]);
         let downItem = concat(BlockConfig.contentConfig[3], BlockConfig.contentConfig[4], BlockConfig.contentConfig[5]);
-        const upWrap = this.renderTemp(upItem);
-        const downWrap = this.renderTemp(downItem);
+        const upWrap = this.renderTempUp(upItem);
+        const downWrap = this.renderTempUpDown(downItem);
         return (<div className='studioContentWrap'>
             <div className='upWrap'>
                 {upWrap}
@@ -31,7 +31,7 @@ class StudioContent extends React.Component {
         </div>);
     }
 
-    renderTemp(items) {
+    renderTempUp(items) {
         let arr = [];
         forEach(items, (item, index) => {
             const temp = <SmallBlock 
@@ -45,6 +45,26 @@ class StudioContent extends React.Component {
                     this._selectUrl(item.path);
                 }}
                 to={`${item.path}?id=${index}`}>
+                    {temp}
+            </NavLink>);
+        });
+        return arr;
+    }
+
+    renderTempUpDown(items) {
+        let arr = [];
+        forEach(items, (item, index) => {
+            const temp = <SmallBlock 
+                key={index}
+                wrapStyle={item.wrapStyle}
+                blockStyle={item.blockStyle}
+                imgSrc={item.imgSrc} />;
+            arr.push(<NavLink 
+                key={index}
+                onClick={() => {
+                    this._selectUrl(item.path);
+                }}
+                to={`${item.path}?id=${index+3}`}>
                     {temp}
             </NavLink>);
         });

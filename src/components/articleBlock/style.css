@@ -6,6 +6,11 @@
     flex-direction: row;  
     justify-content: center;
     margin-bottom: 2rem;
+    transition: box-shadow 1s;
+}
+
+.articleWrap:hover{
+    box-shadow: 0px 0px 10px rgba(230, 230, 230,0.6);
 }
 
 .articleWrap img{
@@ -26,9 +31,10 @@
 .articleWrap a{
     text-decoration: none;
     color: #ffffff;
+    transition: color 0.5s;
 }
 .articleWrap a:hover{
-    color: #3891ec;
+    color: #E26A1E;
 }
 
 .articleWrap div h3{

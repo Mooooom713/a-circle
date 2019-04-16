@@ -40,10 +40,10 @@
 }
 
 .articlePlaceHolderWrap .articlePlaceHolder > div:nth-child(2) > p:nth-child(1){
-    margin-top: 4%;
+    margin-top: 5%;
     margin-left: 4%;
     width: 80%;
-    height: 20%;
+    height: 10%;
     background: #7c7c7c;
     animation: shine 1s;
     animation-iteration-count: infinite;
@@ -65,7 +65,7 @@
     margin-top: 4%;
     margin-left: 4%;
     width: 80%;
-    height: 20%;
+    height: 10%;
     background: #7c7c7c;
     animation: shine 1s;
     animation-iteration-count: infinite;

@@ -3,9 +3,9 @@ import React from 'react';
 import './style.css';
 
 const SmallBlock = (props) => {
-	const { placeHolderName, wrapStyle, blockStyle, imgStyle, imgSrc } = props;
+	const { wrapStyle, blockStyle, imgStyle, imgSrc } = props;
 	return (<div 
-		className={placeHolderName} 
+		className='smallBlockWrap' 
 		style={wrapStyle}>
 		<div style={blockStyle}>
 			<img 

@@ -1,4 +1,9 @@
 .wrapStyle{
     background: rgba(0, 0, 0, 0.4);
     cursor: pointer;
+    transition: background-color 1s;
+}
+
+.wrapStyle:hover{
+    background: rgba(0, 0, 0, 0.6);
 }

@@ -7,8 +7,7 @@ import contentListZH from '../../../../common/content-list';
 const Content = (props) => {
     const listConfig = [
         contentListZH.USER_LIST_USERINFO,
-        contentListZH.USER_LIST_USERCOMMENT_HISTORY,
-        contentListZH.USER_LIST_LOGOUT
+        contentListZH.USER_LIST_USERCOMMENT_HISTORY
     ];
     return (<div className='userCotentWrap'>
         <span>

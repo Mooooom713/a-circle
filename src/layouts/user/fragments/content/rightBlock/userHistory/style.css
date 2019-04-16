@@ -45,7 +45,7 @@
     background: rgba(0, 0, 0, 0);
     border: 0;
     outline: none;
-    font-size: 4rem;
+    font-size: 3rem;
     color: rgb(192, 192, 192);
     transition: color 1s;
     cursor: pointer;
@@ -82,7 +82,7 @@
     background: rgba(0, 0, 0, 0);
     border: 0;
     outline: none;
-    font-size: 4rem;
+    font-size: 3rem;
     color: rgb(192, 192, 192);
     transition: color 1s;
     cursor: pointer;
