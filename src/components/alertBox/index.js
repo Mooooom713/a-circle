@@ -1,9 +1,20 @@
+/*
+ * @Author: Joie Qin 
+ * @Date: 2019-04-23 10:48:37 
+ * @Last Modified by: Joie Qin
+ * @Last Modified time: 2019-04-23 10:52:37
+ */
 import React from 'react';
 import contentListZH from '../../common/content-list';
 import './style.css';
+import PropTypes from 'prop-types';
 
+/**
+ * 弹出提示框
+ * @param {Object} props 外部唯一接口 
+ */
 const AlertBox = (props) => {
-    const { text, isOpen } = props;
+    const { text, isOpen, clickClose, clickOK } = props;
     return (<div className='alertBoxWrap' style={isOpen}>
         <div className='modelWrap'></div>
         <div className='alertBox'>
@@ -18,7 +29,7 @@ const AlertBox = (props) => {
                 <span>
                     <img
                         onClick={() => {
-                            props.clickClose();
+                            clickClose();
                         }}
                         alt='close' 
                         src={require('../../img/icon/close.png')}
@@ -31,7 +42,7 @@ const AlertBox = (props) => {
             <p>
                 <button
                     onClick={() => {
-                        props.clickOK();
+                        clickOK();
                     }}>
                     {contentListZH.ALERTBOX_BTN_TEXT}
                 </button>
@@ -42,3 +53,12 @@ const AlertBox = (props) => {
 
 
 export default AlertBox;
+
+
+//类型校验
+AlertBox.propTypes = {
+    text: PropTypes.string,
+    isOpen: PropTypes.object,
+    clickOK: PropTypes.func.isRequired,
+    clickClose: PropTypes.func.isRequired
+};
