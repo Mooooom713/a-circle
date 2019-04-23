@@ -1,14 +1,17 @@
 /*
  * @Author: Joie Qin 
  * @Date: 2019-03-25 10:57:23 
- * @Last Modified by:   Joie Qin 
- * @Last Modified time: 2019-03-25 10:57:23 
+ * @Last Modified by: Joie Qin
+ * @Last Modified time: 2019-04-23 11:09:52
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
+/**
+ * 主页大模块
+ */
 class LargeBlock extends React.Component {
 
 	constructor(props) {
@@ -52,10 +55,12 @@ class LargeBlock extends React.Component {
 }
 
 
-LargeBlock.propTypes = {
-	imageUrl: PropTypes.string,
-	blockStyle: PropTypes.string,
-	imgStyle: PropTypes.string
-};
-
 export default LargeBlock;
+
+//校验类型
+LargeBlock.propTypes = {
+	imgSrc: PropTypes.string.isRequired,
+	blockPositon: PropTypes.string,
+	imgTitle: PropTypes.string.isRequired,
+	hoverBg: PropTypes.string
+};
